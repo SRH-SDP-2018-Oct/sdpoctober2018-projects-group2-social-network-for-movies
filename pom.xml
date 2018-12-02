@@ -13,7 +13,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.7.Final</version>
+            <version>5.4.0.CR2</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -30,6 +30,14 @@
             <artifactId>javafaker</artifactId>
             <version>0.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-agroal</artifactId>
+            <version>5.4.0.CR2</version>
+            <type>pom</type>
+        </dependency>
+
+
     </dependencies>
 
     

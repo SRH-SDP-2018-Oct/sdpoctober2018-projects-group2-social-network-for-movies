@@ -56,7 +56,7 @@ public class NewUser extends InserUserDetails
             Scanner userinput = new Scanner(System.in);
             System.out.println("Enter your EmailID");
             String email_ID = userinput.nextLine();
-            CredentialsValidation object3 = new CredentialsValidation(email_ID, reference);
+            //CredentialsValidation object3 = new CredentialsValidation(email_ID, reference);
         }
 
 
