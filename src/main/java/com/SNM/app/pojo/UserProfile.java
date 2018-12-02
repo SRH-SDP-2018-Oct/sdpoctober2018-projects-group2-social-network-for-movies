@@ -1,8 +1,9 @@
 package com.SNM.app.pojo;
 
 
-import javax.persistence.*;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 
+import javax.persistence.*;
 @Entity
 @Table(name = "userprofile")
 public class UserProfile{
@@ -76,5 +77,12 @@ public class UserProfile{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setLast_name(MysqlxDatatypes.Scalar.String lastname) {
+    }
+
+
+    public void setEmail_ID(MysqlxDatatypes.Scalar.String emailID) {
     }
 }
