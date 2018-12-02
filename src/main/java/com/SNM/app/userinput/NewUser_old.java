@@ -23,7 +23,7 @@ public class NewUser
         this.enterEmailID();
     }
 
-    private NewUser(String first_name, String last_name, String email_ID, String password, String membership_ID)
+    public NewUser(String first_name, String last_name, String email_ID, String password,String membership_ID)
     {
         this.first_name = first_name;
         this.last_name = last_name;
