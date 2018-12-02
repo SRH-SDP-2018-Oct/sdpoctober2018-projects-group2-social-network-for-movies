@@ -24,7 +24,7 @@ public class HomePage
               //Fetch FetchDetails
               System.out.println("Choose a particular genre");
               genreofchoice=userchoice.nextLine();
-              //fetch movie list for this genre
+              //fetch GenreList
               break;
           case (2):
               System.out.println("Languages Available");
