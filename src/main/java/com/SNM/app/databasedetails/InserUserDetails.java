@@ -5,20 +5,31 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 
 public class InserUserDetails
 
 {
-    SessionFactory factory;
+    static Session sessionObj;
+    static SessionFactory sessionFactoryObj;
 
     public void addUser(String username, String firstname, String lastname, int age, String emailID, String password )
 
     {
-        Session session = factory.openSession();
+        // Creating Configuration Instance & Passing Hibernate Configuration File
+        Configuration configObj = new Configuration().configure();
+        //configObj.configure("hibernate.cfg.xml");
+        configObj.addAnnotatedClass(com.SNM.app.pojo.UserProfile.class);
+        // Since Hibernate Version 4.x, ServiceRegistry Is Being Used
+        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
+
+        // Creating Hibernate SessionFactory Instance
+        sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);
+        Session session = sessionFactoryObj.openSession();
         Transaction tx = null;
-
-
         try
         {
             tx = session.beginTransaction();

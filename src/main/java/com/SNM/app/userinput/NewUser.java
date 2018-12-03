@@ -1,63 +1,105 @@
 package com.SNM.app.userinput;
 
-import com.SNM.app.databasedetails.InserUserDetails;
-import com.SNM.app.validations.CredentialsValidation;
+import com.SNM.app.validations.PasswordHash;
+import com.SNM.app.validations.dbOps;
+
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-public class NewUser extends InserUserDetails
+public class NewUser
 {
-    String username,first_name,last_name,email_ID,date;
-    String password;
-    int age;
+    private String username,first_name,last_name,email_ID,date;
+    private String password,hashPassword;
+    private int age;
 
 
-    Scanner userinput = new Scanner(System.in);
+    private Scanner userinput = new Scanner(System.in);
 
     public NewUser()
     {
-
+        PasswordHash hash= new PasswordHash();
+        dbOps db = new dbOps();
         System.out.println("Welcome !! Register and experience the best");
-
         System.out.println("Enter your First Name");
         this.first_name = userinput.nextLine();
         System.out.println("Enter your Last Name");
         this.last_name = userinput.nextLine();
         this.enterEmailID();
+        this.password = enterPassword();
+        this.hashPassword= hash.HashPassword(password);
         System.out.println("Enter DOB (DD/MM/YY): ");
         date = userinput.next();
         System.out.println("Enter your age");
         this.age = userinput.nextInt();
         int num1 = (Integer.parseInt(date.substring(0,2))+Integer.parseInt(date.substring(3,5))/Integer.parseInt(date.substring(7)));
-        //day + month / year in order to give unique digit
-
         int num2 = Integer.parseInt(date.substring(1,2));
-        //to ensure username is unique
-
-        username = last_name.substring(0,(last_name.length()-1)) + first_name.charAt(0) + num1 + num2;
+        this.username = last_name.substring(0,(last_name.length()-1)) + first_name.charAt(0) + num1 + num2;
         System.out.println("Your Username Is: " + username);
-
-        addUser(username,first_name,last_name,age,email_ID,password);
+        db.setUserDetails(email_ID,username,first_name,last_name,hashPassword,age);
+        System.out.println("User registration sucessfully done, please login again to use the app.");
+        System.exit(0);
     }
 
-    public NewUser(String first_name, String last_name, String email_ID, String password,String uname)
-    {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email_ID = email_ID;
-        this.password = password;
-        this.username=uname;
-        this.enterEmailID();
-    }
+    public void enterEmailID() {
+        Scanner userinput = new Scanner(System.in);
+        System.out.println("Enter your EmailID");
+        this.email_ID = userinput.nextLine();
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email_ID);
 
-    public void enterEmailID()
-        {
-            NewUser reference = this;
-            Scanner userinput = new Scanner(System.in);
-            System.out.println("Enter your EmailID");
-            String email_ID = userinput.nextLine();
-            CredentialsValidation object3 = new CredentialsValidation(email_ID, reference);
+        boolean result = matcher.find();
+        while (!result) {
+            System.out.println("Please enter a vaild email ID:\n");
+            enterEmailID();
         }
 
+    }
+
+    public String enterPassword()
+    {
+        System.out.println("Enter Password");
+        System.out.print("NOTE:The password should be minimum of 8 characters,contain at least 1 special character,uppercase letter\n");
+        String password = userinput.next();
+        System.out.println("Re-Enter Password to confirm : ");
+        String confirm_password = userinput.next();
+        boolean condition = isValid(password);
+
+        while ((!password.equals(confirm_password)) || (!condition))
+        {
+            System.out.println("Password invalid");
+            System.out.print("Please enter the password again :\n");
+            password = userinput.next();
+            System.out.print("Re-Enter Password to confirm :\n");
+            confirm_password = userinput.next();
+            condition = isValid(password);
+
+        }
+        return password;
+    }
+    public  boolean isValid (String password)
+    {
+        Boolean atleastOneUpper = false;
+        Boolean atleastOneLower = false;
+        Boolean atleastOneDigit = false;
+
+        if (password.length() < 8) {
+            return false;
+        }
+
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isUpperCase(password.charAt(i))) {
+                atleastOneUpper = true;
+            } else if (Character.isLowerCase(password.charAt(i))) {
+                atleastOneLower = true;
+            } else if (Character.isDigit(password.charAt(i))) {
+                atleastOneDigit = true;
+            }
+        }
+        return (atleastOneUpper && atleastOneLower && atleastOneDigit);
+
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.SNM.app.validations;
 
-import com.SNM.app.userinput.ExistingUser;
 import com.SNM.app.userinput.NewUser;
 
 import java.util.Random;
@@ -48,12 +47,13 @@ public class CredentialsValidation
 
             }
 
-                System.out.println("Hi !your profile is created.");
-                random_ID=r.nextInt(70000) + 1;
-                membership_ID="SNM"+Integer.toString(random_ID);
-                System.out.print("Your membership_ID is " + membership_ID);
-                System.out.print("\nKindly use your EmailID and password to LogIn .You will be redirected to login page soon\n");
-                ExistingUser login=new ExistingUser();
+//                System.out.println("Hi !your profile is created.");
+//                random_ID=r.nextInt(70000) + 1;
+//                membership_ID="SNM"+Integer.toString(random_ID);
+//                System.out.print("Your membership_ID is " + membership_ID);
+//                System.out.print("\nKindly use your EmailID and password to LogIn .You will be redirected to login page soon\n");
+//                ExistingUser login=new ExistingUser();
+        return;
 
     }
 
