@@ -34,7 +34,6 @@ public class InserUserDetails
         {
             tx = session.beginTransaction();
             UserProfile user = new UserProfile();
-            user.setUser_name(username);
            user.setFirst_name(firstname);
            user.setLast_name(lastname);
            user.setAge(age);

@@ -9,9 +9,8 @@ import javax.persistence.Table;
 @Table(name = "userprofile")
 public class UserProfile {
     @Id
-    //@GeneratedValue
-    @Column(name = "user_name")
-    private String user_name;
+    @Column(name = "email_ID")
+    private String email_ID;
 
     @Column(name = "first_name")
     private String first_name;
@@ -22,23 +21,8 @@ public class UserProfile {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "email_ID")
-    private String email_ID;
-
     @Column(name = "password")
     private String password;
-
-    public UserProfile() {
-    }
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name)
-    {
-        this.user_name = user_name;
-    }
 
     public String getFirst_name() {
         return first_name;
