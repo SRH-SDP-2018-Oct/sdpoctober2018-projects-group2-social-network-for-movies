@@ -1,11 +1,13 @@
 package com.SNM.app.pojo;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "userprofile")
-public class UserProfile{
+public class UserProfile {
     @Id
     //@GeneratedValue
     @Column(name = "user_name")
@@ -23,11 +25,11 @@ public class UserProfile{
     @Column(name = "email_ID")
     private String email_ID;
 
-    @Column(name = "pasword")
+    @Column(name = "password")
     private String password;
 
-
-
+    public UserProfile() {
+    }
 
     public String getUser_name() {
         return user_name;
@@ -71,10 +73,12 @@ public class UserProfile{
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
