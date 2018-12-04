@@ -8,6 +8,7 @@ import com.SNM.app.utils.HibernateUtil;
 
 
 import java.util.List;
+import java.util.Scanner;
 
 public class FetchMovieSearch {
     static Session sessionob;
@@ -23,26 +24,33 @@ public class FetchMovieSearch {
     public void fetchMovieDetails(String movie) {
         MovieDetails movies;
         try {
-
+            String smallLetters = movie.toLowerCase();
             sessionob = hibernateUtil.buildSessionFactory().openSession();
             sessionob.beginTransaction();
             String hql = "FROM MovieDetails movies WHERE movies.movie_name= :UserInputMovie";
             Query query = sessionob.createQuery(hql).setParameter("UserInputMovie", movie);
             List results = query.list();
-           // System.out.println("list: " + results);
+            if (results.isEmpty())
+            {
+                System.out.println("Please Enter Valid Movie Name");
+                System.out.println("Movie not found, please try again:");
+                Scanner scanner = new Scanner(System.in);
+                String mov = scanner.next();
+                fetchMovieDetails(mov);
+            }
             for (Object aList : results) {
                 movies = (MovieDetails) aList;
-                System.out.println("movieID:\t" + movies.getMovie_ID());
-                System.out.println("moviename:\t" + movies.getMovie_name());
-                System.out.println("description:\t" + movies.getDescription());
-                System.out.println("castandcrew:\t" + movies.getCast_and_crew());
-                System.out.println("userrating:\t" + movies.getUser_rating());
-                System.out.println("criticsreview:\t" + movies.getCritics_review());
-                System.out.println("releasedetails:\t" + movies.getRelease_details());
-                System.out.println("censorboardrating:\t" + movies.getCensorboard_ratings());
+                System.out.println("MovieID\t\t\t    :" + movies.getMovie_ID());
+                System.out.println("MovieName\t\t\t:" + movie);
+                System.out.println("Description\t\t\t:" + movies.getDescription());
+                System.out.println("CastAndCrew\t\t    :" + movies.getCast_and_crew());
+                System.out.println("UserRating\t\t    :" + movies.getUser_rating());
+                System.out.println("CriticsReview\t\t:" + movies.getCritics_review());
+                System.out.println("ReleaseDetails\t\t:" + movies.getRelease_details());
+                System.out.println("CensorBoardRating\t:" + movies.getCensorboard_ratings());
 
             }
-            sessionob.getTransaction().commit();
+           // sessionob.getTransaction().commit();
         } catch (Exception sqlException) {
 //            if (null != sessionob.getTransaction()) {
 //                System.out.println("Transaction is being rollback");
