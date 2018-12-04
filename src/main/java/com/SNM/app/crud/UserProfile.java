@@ -1,22 +1,19 @@
-package com.SNM.app.validations;
+package com.SNM.app.crud;
 
-import com.SNM.app.pojo.UserProfile;
+import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-
 import java.util.List;
 
-public class dbOps {
-
+public class UserProfile {
 
     private Session sessionObj;
     private SessionFactory sessionFactoryObj;
     HibernateUtil hibernateUtil = new HibernateUtil();
-
-
-    public void fetchDetails(String email){
-        UserProfile emp;
+    public void fetchDetails(String email)
+    {
+        com.SNM.app.pojo.UserProfile emp;
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
@@ -27,7 +24,7 @@ public class dbOps {
             System.out.println("list: " + results);
             for (Object aList : results)
             {
-                emp = (UserProfile) aList;
+                emp = (com.SNM.app.pojo.UserProfile) aList;
                 System.out.println("Name\t" + emp.getFirst_name());
                 System.out.println("Age\t" + emp.getAge());
                 System.out.println("Password\t" + emp.getPassword());
@@ -47,17 +44,15 @@ public class dbOps {
     }
 
     public void setUserDetails(String email, String fname, String lname, String password, int age) {
-        UserProfile usr = new UserProfile();
+        com.SNM.app.pojo.UserProfile usr = new com.SNM.app.pojo.UserProfile();
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
-
             usr.setAge(age);
             usr.setEmail_ID(email);
             usr.setFirst_name(fname);
             usr.setLast_name(lname);
             usr.setPassword(password);
-
             sessionObj.save(usr);
             sessionObj.flush();
 

@@ -2,7 +2,7 @@ package com.SNM.app.main;
 
 import com.SNM.app.userinput.ExistingUser;
 import com.SNM.app.userinput.NewUser;
-import com.SNM.app.validations.dbOps;
+import com.SNM.app.crud.UserProfile;
 
 import java.util.Scanner;
 
@@ -13,13 +13,13 @@ public class ImplementSNM {
     {
         System.out.println(".......Social Network for Movies.......\n");
 
-        dbOps db = new dbOps();
+        UserProfile user = new UserProfile();
         Scanner userinput=new Scanner(System.in);
         System.out.println("Select an option:\n 1. for Existing User.\n 2. for New User");
         int choice = userinput.nextInt();
         if(choice == 2)
         {
-            NewUser user1 = new NewUser();
+            NewUser newuser = new NewUser();
         }
         else
         {

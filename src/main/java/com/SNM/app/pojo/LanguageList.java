@@ -9,13 +9,13 @@ import javax.persistence.Table;
 @Table(name = "languagelist")
 public class LanguageList {
     @Id
-    CompositekeyLang compositekeyLang;
+    CompositeKeyLanguage compositeKeyLanguage;
 
-    public CompositekeyLang getCompositekeyLang() {
-        return compositekeyLang;
+    public CompositeKeyLanguage getCompositeKeyLanguage() {
+        return compositeKeyLanguage;
     }
 
-    public void setCompositekeyLang(CompositekeyLang compositekeyLang) {
-        this.compositekeyLang = compositekeyLang;
+    public void setCompositeKeyLanguage(CompositeKeyLanguage compositeKeyLanguage) {
+        this.compositeKeyLanguage = compositeKeyLanguage;
     }
 }

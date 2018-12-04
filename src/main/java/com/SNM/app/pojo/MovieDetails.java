@@ -5,11 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "moviedetail")
 public class MovieDetails
 {
     @Id
-
     @Column(name = "movie_ID")
     private int movie_ID;
     @Column(name = "movie_name")
@@ -22,12 +22,18 @@ public class MovieDetails
     private String user_rating;
     @Column(name = "critics_review")
     private String critics_review;
-    @Column(name = "genres")
-    private String genres;
-    @Column(name = "languages")
-    private String languages;
+    @Column(name="release_details")
+    private  String release_details;
     @Column(name = "censorboard_ratings")
     private String censorboard_ratings;
+
+    public String getRelease_details() {
+        return release_details;
+    }
+
+    public void setRelease_details(String release_details) {
+        this.release_details = release_details;
+    }
 
     public int getMovie_ID() {
         return movie_ID;
@@ -75,22 +81,6 @@ public class MovieDetails
 
     public void setCritics_review(String critics_review) {
         this.critics_review = critics_review;
-    }
-
-    public String getGenres() {
-        return genres;
-    }
-
-    public void setGenres(String genres) {
-        this.genres = genres;
-    }
-
-    public String getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(String languages) {
-        this.languages = languages;
     }
 
     public String getCensorboard_ratings() {

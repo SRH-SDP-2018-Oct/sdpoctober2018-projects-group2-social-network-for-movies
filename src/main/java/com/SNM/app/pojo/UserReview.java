@@ -6,13 +6,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+
 @Table(name = "userreview")
 public class UserReview {
     @Id
-    @Column(name = "serial_no")
-    private int serial_no;
-    @Column(name = "user_name")
-    private String user_name;
+    //composite key POJO to be added
+    @Column(name = "email_ID")
+    private String email_ID;
     @Column(name = "movie_ID")
     private int movie_ID;
     @Column(name = "review")
@@ -20,20 +20,12 @@ public class UserReview {
     @Column(name = "timestamp")
     private Date timestamp;
 
-    public int getSerial_no() {
-        return serial_no;
+    public String getEmail_ID() {
+        return email_ID;
     }
 
-    public void setSerial_no(int serial_no) {
-        this.serial_no = serial_no;
-    }
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setEmail_ID(String email_ID) {
+        this.email_ID = email_ID;
     }
 
     public int getMovie_ID() {

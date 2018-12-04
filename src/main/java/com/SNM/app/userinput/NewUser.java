@@ -1,7 +1,7 @@
 package com.SNM.app.userinput;
 
 import com.SNM.app.validations.PasswordHash;
-import com.SNM.app.validations.dbOps;
+import com.SNM.app.crud.UserProfile;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -20,7 +20,7 @@ public class NewUser
     public NewUser()
     {
         PasswordHash hash= new PasswordHash();
-        dbOps db = new dbOps();
+        UserProfile user = new UserProfile();
         System.out.println("Welcome !! Register and experience the best");
         System.out.println("Enter your First Name");
         this.first_name = userinput.nextLine();
@@ -31,8 +31,8 @@ public class NewUser
         this.hashPassword= hash.HashPassword(password);
         System.out.println("Enter your age");
         this.age = userinput.nextInt();
-        db.setUserDetails(email_ID,first_name,last_name,hashPassword,age);
-        System.out.println("User registration sucessfully done, please login again to use the app.");
+        user.setUserDetails(email_ID,first_name,last_name,hashPassword,age);
+        System.out.println("User registration sucessfully done!!Please login again to use the application.");
         System.exit(0);
     }
 
@@ -43,7 +43,6 @@ public class NewUser
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email_ID);
-
         boolean result = matcher.find();
         while (!result) {
             System.out.println("Please enter a vaild email ID:\n");
@@ -55,21 +54,19 @@ public class NewUser
     public String enterPassword()
     {
         System.out.println("Enter Password");
-        System.out.print("NOTE:The password should be minimum of 8 characters,contain at least 1 special character,uppercase letter\n");
+        System.out.print("NOTE:The password should be minimum of 8 characters,contain at least 1 special character and 1 uppercase letter\n");
         String password = userinput.next();
-        System.out.println("Re-Enter Password to confirm : ");
+        System.out.println("Confirm password: ");
         String confirm_password = userinput.next();
         boolean condition = isValid(password);
-
         while ((!password.equals(confirm_password)) || (!condition))
         {
             System.out.println("Password invalid");
             System.out.print("Please enter the password again :\n");
             password = userinput.next();
-            System.out.print("Re-Enter Password to confirm :\n");
+            System.out.print("Confirm password:\n");
             confirm_password = userinput.next();
             condition = isValid(password);
-
         }
         return password;
     }

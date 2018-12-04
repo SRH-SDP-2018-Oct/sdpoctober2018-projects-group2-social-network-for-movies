@@ -5,30 +5,34 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "genrelist")
 public class GenreList
 {
     @Id
-
     @Column(name = "genre")
     private String genre;
 
-    @Column(name = "movies")
-    private String movies;
+    @Column(name = "movie_ID")
+    private int movie_ID;
 
-    public String getGenre() {
+    public String getGenre()
+    {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(String genre)
+    {
         this.genre = genre;
     }
 
-    public String getMovies() {
-        return movies;
+    public int getMovie_ID()
+    {
+        return movie_ID;
     }
 
-    public void setMovies(String movies) {
-        this.movies = movies;
+    public void setMovie_ID(int movie_ID)
+    {
+        this.movie_ID = movie_ID;
     }
 }

@@ -20,26 +20,24 @@ public class HomePage
       switch(userChoice)
       {
           case (1):
-              System.out.println("Genres Available");
+              System.out.println("Genres available");
               //Fetch FetchDetails
               System.out.println("Choose a particular genre");
               genreofchoice=userchoice.nextLine();
               //fetch GenreList
               break;
           case (2):
-              System.out.println("Languages Available");
+              System.out.println("Languages available");
               //Fetch
-              System.out.println("Choose a particular Language");
+              System.out.println("Choose a particular language");
               languageofchoice=userchoice.nextLine();
               //fetch all movies corresponding to this language
-                break;
+              break;
           case (3):
               System.out.println("List of all trending movies");
               //Fetch
-              System.out.println("If you want to select a particular movie,please proceed");
-
+              System.out.println("Select a particular movie to proceed");
               moviedetailsneeded=userchoice.nextLine();
-
               break;
           case (4):
               System.out.println("List of all groups");
@@ -60,7 +58,6 @@ public class HomePage
               break;
           default:
               System.out.println("EXIT");
-
       }
   }
 

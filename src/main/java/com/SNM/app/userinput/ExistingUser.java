@@ -1,6 +1,6 @@
 package com.SNM.app.userinput;
 
-import com.SNM.app.validations.HibernateUtil;
+import com.SNM.app.utils.HibernateUtil;
 import com.SNM.app.validations.PasswordHash;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,45 +16,44 @@ public class ExistingUser
     private Session sessionObj;
     private SessionFactory sessionFactoryObj;
     public HibernateUtil hibernateUtil = new HibernateUtil();
-    PasswordHash ph = new PasswordHash();
+    PasswordHash passwordhash = new PasswordHash();
 
 
     public ExistingUser() {
 
         Scanner useremailID = new Scanner(System.in);
-        System.out.println("Enter EmailID to LogIn");
+        System.out.println("Enter your EmailID to LogIn");
         this.emailID = useremailID.next();
         this.getDetails();
         System.out.println("Enter the password");
         this.password = useremailID.next();
         System.out.println(password );
-        hashPassword = ph.HashPassword(password);
+        hashPassword = passwordhash.HashPassword(password);
         System.out.println(hashPassword);
         if (!(hashPasswordDb.equals(hashPassword)) ) {
             System.out.println("Authentication failed.");
         } else {
-            System.out.println("Done for the day...");
+            System.out.println("Successfully LoggedIn");
         }
     }
     public void getDetails()
     {
-        UserProfile emp;
+        UserProfile userprofile;
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
-            String hql = "FROM UserProfile emp WHERE emp.email_ID= :email_ID";
-            //String hql = "FROM UserProfile emp";
+            String hql = "FROM UserProfile userprofile WHERE userprofile.email_ID= :email_ID";
             Query query = sessionObj.createQuery(hql).setParameter("email_ID", emailID);
             List results = query.list();
             if (results.isEmpty())
             {
-                System.out.println("Email ID not found please try again:");
+                System.out.println("Email ID not found!!Please try again:");
                 System.exit(-2);
             }
             for (Object aList : results)
             {
-                emp = (UserProfile) aList;
-                this.hashPasswordDb = emp.getPassword();
+                userprofile = (UserProfile) aList;
+                this.hashPasswordDb = userprofile.getPassword();
                 System.out.println(hashPasswordDb);
             }
             sessionObj.getTransaction().commit();
