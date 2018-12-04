@@ -34,6 +34,7 @@ public class ExistingUser
             System.out.println("Authentication failed.");
         } else {
             System.out.println("Successfully LoggedIn");
+            HomePage homePage = new HomePage();
         }
     }
     public void getDetails()

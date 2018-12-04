@@ -7,9 +7,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "moviedetail")
-public class MovieDetails
-{
+
+public class MovieDetails {
     @Id
+
     @Column(name = "movie_ID")
     private int movie_ID;
     @Column(name = "movie_name")
@@ -22,18 +23,10 @@ public class MovieDetails
     private String user_rating;
     @Column(name = "critics_review")
     private String critics_review;
-    @Column(name="release_details")
-    private  String release_details;
+    @Column(name = "release_details")
+    private String release_details;
     @Column(name = "censorboard_ratings")
     private String censorboard_ratings;
-
-    public String getRelease_details() {
-        return release_details;
-    }
-
-    public void setRelease_details(String release_details) {
-        this.release_details = release_details;
-    }
 
     public int getMovie_ID() {
         return movie_ID;
@@ -81,6 +74,14 @@ public class MovieDetails
 
     public void setCritics_review(String critics_review) {
         this.critics_review = critics_review;
+    }
+
+    public String getRelease_details() {
+        return release_details;
+    }
+
+    public void setRelease_details(String release_details) {
+        this.release_details = release_details;
     }
 
     public String getCensorboard_ratings() {

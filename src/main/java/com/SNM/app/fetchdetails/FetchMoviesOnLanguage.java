@@ -19,7 +19,7 @@ public class FetchMoviesOnLanguage {
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
-            String hql = "FROM LanguageList l WHERE l.compositekeyLang.movie_I D= :movie_ID";
+            String hql = "FROM LanguageList l WHERE l.compositekeyLang.movie_ID= :movie_ID";
 //            String hql = "FROM MovieDetails m JOIN LanguageList l"+
 //                    "ON l.movie_ID = m.movie_ID" +
 //                    "AND l.language= ka";

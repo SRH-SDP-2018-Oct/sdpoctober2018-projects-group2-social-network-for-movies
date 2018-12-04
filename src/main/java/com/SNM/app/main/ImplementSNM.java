@@ -25,6 +25,7 @@ public class ImplementSNM {
         {
             ExistingUser user2 = new ExistingUser();
         }
-        System.out.println("Ignore");
+
+
     }
 }

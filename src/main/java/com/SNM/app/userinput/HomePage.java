@@ -1,5 +1,7 @@
 package com.SNM.app.userinput;
 
+import com.SNM.app.fetchdetails.FetchMovieSearch;
+
 import java.util.Scanner;
 
 public class HomePage
@@ -49,8 +51,8 @@ public class HomePage
               System.out.println("Search on basis of movie name");
               //Fetch
               System.out.println("If you want to view a particular group,please select from the list");
-              moviedetailsbasedonname=userchoice.nextLine();
-              //call fetchmoviedetails class
+              moviedetailsbasedonname=userchoice.next();
+              FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(moviedetailsbasedonname);
               break;
           case (6):
               System.out.println("View Watchlist");
