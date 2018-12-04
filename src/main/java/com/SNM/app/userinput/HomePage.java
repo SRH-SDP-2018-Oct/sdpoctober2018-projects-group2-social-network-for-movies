@@ -1,6 +1,6 @@
 package com.SNM.app.userinput;
 
-import com.SNM.app.fetchdetails.FetchMovieSearch;
+import com.SNM.app.fetchdetails.*;
 
 import java.util.Scanner;
 
@@ -22,18 +22,16 @@ public class HomePage
       switch(userChoice)
       {
           case (1):
-              System.out.println("Genres available");
-              //Fetch FetchDetails
-              System.out.println("Choose a particular genre");
-              genreofchoice=userchoice.nextLine();
-              //fetch GenreList
+              System.out.println("Genres available:\nAction\nRomance");
+              System.out.println("Choose a particular genre:");
+              genreofchoice=userchoice.next();
+              getMoviesGenre getMoviesGenre = new getMoviesGenre(genreofchoice);
               break;
           case (2):
               System.out.println("Languages available");
-              //Fetch
-              System.out.println("Choose a particular language");
-              languageofchoice=userchoice.nextLine();
-              //fetch all movies corresponding to this language
+              System.out.println("Kannada ka \n English en\n Please enter your choice:");
+              languageofchoice=userchoice.next();
+              getMoviesLang getMoviesLang =new getMoviesLang(languageofchoice);
               break;
           case (3):
               System.out.println("List of all trending movies");
@@ -48,9 +46,7 @@ public class HomePage
               groupdetailsneeded=userchoice.nextLine();
               break;
           case (5):
-              System.out.println("Search on basis of movie name");
-              //Fetch
-              System.out.println("If you want to view a particular group,please select from the list");
+              System.out.println("Please enter name of the Movie:");
               moviedetailsbasedonname=userchoice.next();
               FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(moviedetailsbasedonname);
               break;

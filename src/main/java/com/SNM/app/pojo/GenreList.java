@@ -1,38 +1,24 @@
 package com.SNM.app.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "genrelist")
 public class GenreList
 {
     @Id
-    @Column(name = "genre")
-    private String genre;
+    CompositekeyGenre compositekeyGenre;
+    @OneToMany(cascade=CascadeType.ALL)
 
-    @Column(name = "movie_ID")
-    private int movie_ID;
+    @JoinColumns({
+            @JoinColumn(name="genre"),
+            @JoinColumn(name = "movie_ID")
+    })
+    private Set<MovieDetails> movies;
+    public Set<MovieDetails> getMovies() { return movies; }
+    public void setMovies(Set<MovieDetails> movies) { this.movies = movies; }
 
-    public String getGenre()
-    {
-        return genre;
-    }
-
-    public void setGenre(String genre)
-    {
-        this.genre = genre;
-    }
-
-    public int getMovie_ID()
-    {
-        return movie_ID;
-    }
-
-    public void setMovie_ID(int movie_ID)
-    {
-        this.movie_ID = movie_ID;
-    }
+    public CompositekeyGenre getCompositekeyGenre() { return compositekeyGenre; }
+    public void setCompositekeyGenre(CompositekeyGenre compositekeyGenre) { this.compositekeyGenre = compositekeyGenre;}
 }
