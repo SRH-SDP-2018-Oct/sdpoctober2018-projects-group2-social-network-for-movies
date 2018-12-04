@@ -7,7 +7,7 @@ import java.util.Set;
 @Table(name = "languagelist")
 public class LanguageList {
     @Id
-    CompositekeyLang compositekeyLang;
+    CompositeKeyLanguage compositeKeyLanguage;
     @OneToMany(cascade=CascadeType.ALL)
 
     @JoinColumns({
@@ -18,6 +18,6 @@ public class LanguageList {
     public Set<MovieDetails> getMovies() { return movies; }
     public void setMovies(Set<MovieDetails> movies) { this.movies = movies; }
 
-    public CompositekeyLang getCompositekeyLang() {return compositekeyLang;}
-    public void setCompositekeyLang(CompositekeyLang compositekeyLang) {this.compositekeyLang = compositekeyLang;}
+    public CompositeKeyLanguage getCompositeKeyLanguage() {return compositeKeyLanguage;}
+    public void setCompositeKeyLanguage(CompositeKeyLanguage compositeKeyLanguage) {this.compositeKeyLanguage = compositeKeyLanguage;}
 }

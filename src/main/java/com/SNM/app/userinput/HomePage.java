@@ -1,6 +1,8 @@
 package com.SNM.app.userinput;
 
-import com.SNM.app.fetchdetails.*;
+import com.SNM.app.crud.FetchMovieSearch;
+import com.SNM.app.crud.FetchMoviesGenre;
+import com.SNM.app.crud.FetchMoviesLanguage;
 
 import java.util.Scanner;
 
@@ -25,13 +27,13 @@ public class HomePage
               System.out.println("Genres available:\nAction\nRomance");
               System.out.println("Choose a particular genre:");
               genreofchoice=userchoice.next();
-              getMoviesGenre getMoviesGenre = new getMoviesGenre(genreofchoice);
+              FetchMoviesGenre fetchMoviesGenre = new FetchMoviesGenre(genreofchoice);
               break;
           case (2):
               System.out.println("Languages available");
               System.out.println("Kannada ka \n English en\n Please enter your choice:");
               languageofchoice=userchoice.next();
-              getMoviesLang getMoviesLang =new getMoviesLang(languageofchoice);
+              FetchMoviesLanguage fetchMoviesLanguage =new FetchMoviesLanguage(languageofchoice);
               break;
           case (3):
               System.out.println("List of all trending movies");

@@ -1,7 +1,6 @@
-package com.SNM.app.fetchdetails;
+package com.SNM.app.crud;
 
 import com.SNM.app.pojo.MovieDetails;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

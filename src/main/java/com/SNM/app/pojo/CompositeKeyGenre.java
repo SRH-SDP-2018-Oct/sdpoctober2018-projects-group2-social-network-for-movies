@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class CompositekeyGenre implements Serializable {
+public class CompositeKeyGenre implements Serializable {
 
     private String genre;
     private int movie_ID;

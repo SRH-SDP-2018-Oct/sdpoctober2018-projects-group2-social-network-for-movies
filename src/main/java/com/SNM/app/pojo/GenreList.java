@@ -8,7 +8,7 @@ import java.util.Set;
 public class GenreList
 {
     @Id
-    CompositekeyGenre compositekeyGenre;
+    CompositeKeyGenre compositekeyGenre;
     @OneToMany(cascade=CascadeType.ALL)
 
     @JoinColumns({
@@ -19,6 +19,6 @@ public class GenreList
     public Set<MovieDetails> getMovies() { return movies; }
     public void setMovies(Set<MovieDetails> movies) { this.movies = movies; }
 
-    public CompositekeyGenre getCompositekeyGenre() { return compositekeyGenre; }
-    public void setCompositekeyGenre(CompositekeyGenre compositekeyGenre) { this.compositekeyGenre = compositekeyGenre;}
+    public CompositeKeyGenre getCompositekeyGenre() { return compositekeyGenre; }
+    public void setCompositekeyGenre(CompositeKeyGenre compositekeyGenre) { this.compositekeyGenre = compositekeyGenre;}
 }
