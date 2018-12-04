@@ -46,17 +46,16 @@ public class dbOps {
         }
     }
 
-    public void setUserDetails(String email, String uname, String fname, String lname, String password, int age) {
+    public void setUserDetails(String email, String fname, String lname, String password, int age) {
         UserProfile usr = new UserProfile();
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
 
-            usr.setAge(25);
+            usr.setAge(age);
             usr.setEmail_ID(email);
             usr.setFirst_name(fname);
             usr.setLast_name(lname);
-            usr.setUser_name(uname);
             usr.setPassword(password);
 
             sessionObj.save(usr);

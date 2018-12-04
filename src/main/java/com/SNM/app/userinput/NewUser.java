@@ -29,15 +29,9 @@ public class NewUser
         this.enterEmailID();
         this.password = enterPassword();
         this.hashPassword= hash.HashPassword(password);
-        System.out.println("Enter DOB (DD/MM/YY): ");
-        date = userinput.next();
         System.out.println("Enter your age");
         this.age = userinput.nextInt();
-        int num1 = (Integer.parseInt(date.substring(0,2))+Integer.parseInt(date.substring(3,5))/Integer.parseInt(date.substring(7)));
-        int num2 = Integer.parseInt(date.substring(1,2));
-        this.username = last_name.substring(0,(last_name.length()-1)) + first_name.charAt(0) + num1 + num2;
-        System.out.println("Your Username Is: " + username);
-        db.setUserDetails(email_ID,username,first_name,last_name,hashPassword,age);
+        db.setUserDetails(email_ID,first_name,last_name,hashPassword,age);
         System.out.println("User registration sucessfully done, please login again to use the app.");
         System.exit(0);
     }

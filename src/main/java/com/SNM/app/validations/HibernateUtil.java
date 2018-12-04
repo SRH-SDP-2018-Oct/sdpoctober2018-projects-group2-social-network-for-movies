@@ -7,7 +7,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-
 public class HibernateUtil {
 
     static Session sessionObj;
@@ -16,7 +15,7 @@ public class HibernateUtil {
     public static SessionFactory buildSessionFactory() {
 
         Configuration configObj = new Configuration().configure();
-        configObj.configure("hibernate.cfg.xml");
+        //configObj.configure("hibernate.cfg.xml");
         configObj.addAnnotatedClass(UserProfile.class);
 
         ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
