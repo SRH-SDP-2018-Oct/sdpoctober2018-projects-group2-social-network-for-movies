@@ -31,7 +31,8 @@ public class UserProfile {
             }
             sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {
-            if(null != sessionObj.getTransaction()) {
+            if(null != sessionObj.getTransaction())
+            {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
                 sessionObj.getTransaction().rollback();
             }

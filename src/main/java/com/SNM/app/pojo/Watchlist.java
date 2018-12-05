@@ -16,19 +16,23 @@ public class Watchlist
    @Column (name = "movie_ID")
     private String movie_ID;
 
-    public String getEmail_ID() {
+    public String getEmail_ID()
+    {
         return email_ID;
     }
 
-    public void setEmail_ID(String email_ID) {
+    public void setEmail_ID(String email_ID)
+    {
         this.email_ID = email_ID;
     }
 
-    public String getMovie_ID() {
+    public String getMovie_ID()
+    {
         return movie_ID;
     }
 
-    public void setMovie_ID(String movie_ID) {
+    public void setMovie_ID(String movie_ID)
+    {
         this.movie_ID = movie_ID;
     }
 }
