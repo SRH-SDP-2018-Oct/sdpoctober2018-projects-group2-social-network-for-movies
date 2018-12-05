@@ -1,9 +1,6 @@
 package com.SNM.app.userinput;
 
-import com.SNM.app.crud.FetchMovieSearch;
-import com.SNM.app.crud.FetchMoviesGenre;
-import com.SNM.app.crud.FetchMoviesLanguage;
-import com.SNM.app.crud.FetchTrendingMovies;
+import com.SNM.app.crud.*;
 
 import java.util.Scanner;
 
@@ -54,7 +51,9 @@ public class HomePage
               break;
           case (6):
               System.out.println("View Watchlist");
-              //Fetch
+
+              FetchWatchList viewwatchlist= FetchWatchList.getFetchWatchListInstance();
+                viewwatchlist.fetchWatchList();
               break;
           default:
               System.out.println("EXIT");

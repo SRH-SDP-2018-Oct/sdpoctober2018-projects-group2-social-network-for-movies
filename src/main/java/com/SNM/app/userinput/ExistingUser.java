@@ -1,5 +1,6 @@
 package com.SNM.app.userinput;
 
+import com.SNM.app.crud.FetchWatchList;
 import com.SNM.app.utils.HibernateUtil;
 import com.SNM.app.validations.PasswordHash;
 import org.hibernate.Session;
@@ -56,6 +57,8 @@ public class ExistingUser
                 userprofile = (UserProfile) aList;
                 this.hashPasswordDb = userprofile.getPassword();
                 System.out.println(hashPasswordDb);
+                FetchWatchList watchList = FetchWatchList.getFetchWatchListInstance();
+                watchList.setemail_ID(userprofile.getEmail_ID());
             }
             sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {
@@ -70,4 +73,5 @@ public class ExistingUser
             }
         }
     }
+
 }

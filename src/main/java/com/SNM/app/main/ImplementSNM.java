@@ -2,7 +2,6 @@ package com.SNM.app.main;
 
 import com.SNM.app.userinput.ExistingUser;
 import com.SNM.app.userinput.NewUser;
-
 import java.util.Scanner;
 
 public class ImplementSNM {
@@ -27,7 +26,7 @@ public class ImplementSNM {
         }
         else if(choice.equals("1"))
         {
-            ExistingUser user2 = new ExistingUser();
+            ExistingUser existinguser = new ExistingUser();
         }
         else{
             appStart();

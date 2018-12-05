@@ -14,8 +14,9 @@ public class HibernateUtil
     public static SessionFactory buildSessionFactory()
     {
         Configuration configObj = new Configuration().configure();
-        configObj.configure("hibernate.cfg.xml");
-        configObj.addAnnotatedClass(UserProfile.class).addAnnotatedClass(MovieDetails.class).addAnnotatedClass(UserReview.class).addAnnotatedClass(Watchlist.class).addAnnotatedClass(TrendingMovies.class).addAnnotatedClass(LanguageList.class).addAnnotatedClass(GroupDetail.class).addAnnotatedClass(GroupComment.class).addAnnotatedClass(GenreList.class).addAnnotatedClass(CompositeKeyGenre.class).addAnnotatedClass(CompositeKeyLanguage.class);
+        //configObj.configure("hibernate.cfg.xml");
+        //configObj.addAnnotatedClass(UserProfile.class).addAnnotatedClass(MovieDetails.class).addAnnotatedClass(UserReview.class).addAnnotatedClass(Watchlist.class).addAnnotatedClass(TrendingMovies.class).addAnnotatedClass(LanguageList.class).addAnnotatedClass(GroupDetail.class).addAnnotatedClass(GroupComment.class).addAnnotatedClass(GenreList.class).addAnnotatedClass(CompositeKeyGenre.class).addAnnotatedClass(CompositeKeyLanguage.class).addAnnotatedClass(CompositeKeyWatchList.class);
+        configObj.addAnnotatedClass(MovieDetails.class).addAnnotatedClass(CompositeKeyWatchList.class).addAnnotatedClass(Watchlist.class).addAnnotatedClass(UserProfile.class);
         ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
         sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);
         return sessionFactoryObj;

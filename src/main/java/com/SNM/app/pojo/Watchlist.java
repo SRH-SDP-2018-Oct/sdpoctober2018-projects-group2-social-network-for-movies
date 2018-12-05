@@ -1,38 +1,41 @@
 package com.SNM.app.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "watchlist")
 public class Watchlist
 {
 
-   @Id
-   @Column (name = "email_ID")
-    private String email_ID;
-   @Column (name = "movie_ID")
-    private String movie_ID;
 
-    public String getEmail_ID()
-    {
-        return email_ID;
+       @EmbeddedId
+   public
+   CompositeKeyWatchList compositeKeyWatchList;
+
+    public CompositeKeyWatchList getCompositeKeyWatchList() {
+        return compositeKeyWatchList;
     }
 
-    public void setEmail_ID(String email_ID)
-    {
-        this.email_ID = email_ID;
+    public void setCompositeKeyWatchList(CompositeKeyWatchList compositeKeyWatchList) {
+        this.compositeKeyWatchList = compositeKeyWatchList;
     }
-
-    public String getMovie_ID()
-    {
-        return movie_ID;
-    }
-
-    public void setMovie_ID(String movie_ID)
-    {
-        this.movie_ID = movie_ID;
-    }
+//    @EmbeddedId
+//    private CompositeKeyWatchList email_ID;
+//    private  CompositeKeyWatchList movie_ID;
+//
+//    public CompositeKeyWatchList getEmail_ID() {
+//        return email_ID;
+//    }
+//
+//    public void setEmail_ID(CompositeKeyWatchList email_ID) {
+//        this.email_ID = email_ID;
+//    }
+//
+//    public CompositeKeyWatchList getMovie_ID() {
+//        return movie_ID;
+//    }
+//
+//    public void setMovie_ID(CompositeKeyWatchList movie_ID) {
+//        this.movie_ID = movie_ID;
+//    }
 }
