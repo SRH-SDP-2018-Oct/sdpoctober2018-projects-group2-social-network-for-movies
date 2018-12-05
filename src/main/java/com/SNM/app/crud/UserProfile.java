@@ -1,5 +1,4 @@
 package com.SNM.app.crud;
-
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,7 +6,6 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class UserProfile {
-
     private Session sessionObj;
     private SessionFactory sessionFactoryObj;
     HibernateUtil hibernateUtil = new HibernateUtil();
@@ -43,7 +41,6 @@ public class UserProfile {
             }
         }
     }
-
     public void setUserDetails(String email, String fname, String lname, String password, int age) {
         com.SNM.app.pojo.UserProfile usr = new com.SNM.app.pojo.UserProfile();
         try {
@@ -56,13 +53,11 @@ public class UserProfile {
             usr.setPassword(password);
             sessionObj.save(usr);
             sessionObj.flush();
-
             sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {
 //            if(null != sessionObj.getTransaction()) {
 //                System.out.println("\n.......Transaction Is Being Rolled Back.......");
 //                sessionObj.getTransaction().rollback();}
-
             sqlException.printStackTrace();
         } finally {
             if(sessionObj != null) {
@@ -70,8 +65,4 @@ public class UserProfile {
             }
         }
     }
-
-
  }
-
-

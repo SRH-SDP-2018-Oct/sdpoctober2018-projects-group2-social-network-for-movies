@@ -8,11 +8,11 @@ public class HomePage
 
 {
     Scanner userchoice= new Scanner(System.in);
-    String genreofchoice;
-    String languageofchoice;
-    String moviedetailsneeded;
-    String moviedetailsbasedonname;
-    String groupdetailsneeded;
+    private String genreofchoice;
+    private String languageofchoice;
+    private String moviedetailsneeded;
+    private String moviedetailsbasedonname;
+    private String groupdetailsneeded;
 
   HomePage()
   {

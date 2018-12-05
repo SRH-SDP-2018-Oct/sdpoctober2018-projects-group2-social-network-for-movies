@@ -6,9 +6,7 @@ import javax.persistence.*;
 @Table(name = "watchlist")
 public class Watchlist
 {
-
-
-       @EmbeddedId
+    @EmbeddedId
    public
    CompositeKeyWatchList compositeKeyWatchList;
 

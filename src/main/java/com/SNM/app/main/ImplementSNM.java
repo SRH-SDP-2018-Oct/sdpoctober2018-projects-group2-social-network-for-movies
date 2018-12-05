@@ -5,15 +5,12 @@ import com.SNM.app.userinput.NewUser;
 import java.util.Scanner;
 
 public class ImplementSNM {
-
     public static void main(String[] args)
-
     {
         System.out.println(".......Social Network for Movies.......\n");
 //        UserProfile user = new UserProfile();
         appStart();
     }
-
 
     public static void appStart()
     {

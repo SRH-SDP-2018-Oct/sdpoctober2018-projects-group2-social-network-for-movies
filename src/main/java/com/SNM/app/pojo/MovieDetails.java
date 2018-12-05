@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 public class MovieDetails {
     @Id
-
     @Column(name = "movie_ID")
     private int movie_ID;
     @Column(name = "movie_name")
@@ -15,14 +14,20 @@ public class MovieDetails {
     private String description;
     @Column(name = "cast_and_crew")
     private String cast_and_crew;
-    @Column(name = "user_rating")
-    private String user_rating;
+    @Column(name = "rating")
+    private int rating;
     @Column(name = "critics_review")
     private String critics_review;
     @Column(name = "release_details")
     private String release_details;
     @Column(name = "censorboard_ratings")
     private String censorboard_ratings;
+    @Column(name = "ratecount")
+    private int ratecount;
+
+    public int getRatecount() {  return ratecount; }
+
+    public void setRatecount(int ratecount) {   this.ratecount = ratecount;   }
 
     public int getMovie_ID() {
         return movie_ID;
@@ -56,12 +61,12 @@ public class MovieDetails {
         this.cast_and_crew = cast_and_crew;
     }
 
-    public String getUser_rating() {
-        return user_rating;
+    public int getRating() {
+        return rating;
     }
 
-    public void setUser_rating(String user_rating) {
-        this.user_rating = user_rating;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public String getCritics_review() {
