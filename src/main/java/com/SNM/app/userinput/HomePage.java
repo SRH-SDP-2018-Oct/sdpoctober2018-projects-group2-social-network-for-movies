@@ -3,6 +3,7 @@ package com.SNM.app.userinput;
 import com.SNM.app.crud.FetchMovieSearch;
 import com.SNM.app.crud.FetchMoviesGenre;
 import com.SNM.app.crud.FetchMoviesLanguage;
+import com.SNM.app.crud.FetchTrendingMovies;
 
 import java.util.Scanner;
 
@@ -37,9 +38,8 @@ public class HomePage
               break;
           case (3):
               System.out.println("List of all trending movies");
-              //Fetch
-              System.out.println("Select a particular movie to proceed");
-              moviedetailsneeded=userchoice.nextLine();
+              FetchTrendingMovies fetchTrendingMovies = new FetchTrendingMovies();
+              fetchTrendingMovies.fetchTrendingMovies();
               break;
           case (4):
               System.out.println("List of all groups");
