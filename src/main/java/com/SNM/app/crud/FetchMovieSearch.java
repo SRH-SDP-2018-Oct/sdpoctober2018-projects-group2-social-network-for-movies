@@ -18,15 +18,15 @@ public class FetchMovieSearch {
     private int mov;
     public FetchMovieSearch(String movie_name) {
 
-        String smallLetters = movie_name.toLowerCase();
-        fetchMovieDetails(smallLetters);
+
+        fetchMovieDetails(movie_name);
     }
 
 
     public void fetchMovieDetails(String movie) {
         MovieDetails movies;
         try {
-
+            String smallLetters = movie.toLowerCase();
             sessionob = hibernateUtil.buildSessionFactory().openSession();
             sessionob.beginTransaction();
             String hql = "FROM MovieDetails movies WHERE movies.movie_name= :UserInputMovie";
