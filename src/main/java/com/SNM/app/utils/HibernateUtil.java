@@ -1,11 +1,14 @@
 package com.SNM.app.utils;
 
+import com.SNM.app.pojo.CompositeKeyWatchList;
+import com.SNM.app.pojo.MovieDetails;
+import com.SNM.app.pojo.UserProfile;
+import com.SNM.app.pojo.Watchlist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import com.SNM.app.pojo.*;
 
 public class HibernateUtil
 {

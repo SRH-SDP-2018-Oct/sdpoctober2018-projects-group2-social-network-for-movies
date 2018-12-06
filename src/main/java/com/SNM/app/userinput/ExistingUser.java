@@ -1,6 +1,7 @@
 package com.SNM.app.userinput;
 
 import com.SNM.app.crud.FetchWatchList;
+import com.SNM.app.pojo.UserProfile;
 import com.SNM.app.utils.HibernateUtil;
 import com.SNM.app.validations.PasswordHash;
 import org.hibernate.Session;
@@ -9,7 +10,6 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Scanner;
-import com.SNM.app.pojo.*;
 
 public class ExistingUser
 {
@@ -21,23 +21,40 @@ public class ExistingUser
 
 
     public ExistingUser() {
+        this.enterEmail();
+    }
 
+    public void enterEmail(){
         Scanner useremailID = new Scanner(System.in);
         System.out.println("Enter your EmailID to LogIn");
         this.emailID = useremailID.next();
         this.getDetails();
-        System.out.println("Enter the password");
-        this.password = useremailID.next();
-        System.out.println(password );
-        hashPassword = passwordhash.HashPassword(password);
-        System.out.println(hashPassword);
-        if (!(hashPasswordDb.equals(hashPassword)) ) {
-            System.out.println("Authentication failed.");
-        } else {
-            System.out.println("Successfully LoggedIn");
-            HomePage homePage = new HomePage();
-        }
+        this.enterPassword();
+
     }
+
+    int countDown =2;
+public void enterPassword(){
+    Scanner useremailID = new Scanner(System.in);
+    System.out.println("Enter the password");
+    this.password = useremailID.next();
+    System.out.println(password );
+    hashPassword = passwordhash.HashPassword(password);
+    System.out.println(hashPassword);
+    if (!(hashPasswordDb.equals(hashPassword)) ) {
+        if(countDown == 0){
+            System.out.println("Authentication failed,Please contact Admin");
+            System.exit(-2);
+        }
+        System.out.println("Authentication failed. Please try again you have "+ this.countDown +" more chance;");
+        countDown--;
+        enterPassword();
+    } else {
+        System.out.println("Successfully LoggedIn");
+        HomePage homePage = new HomePage();
+    }
+
+}
     public void getDetails()
     {
         UserProfile userprofile;
@@ -50,7 +67,8 @@ public class ExistingUser
             if (results.isEmpty())
             {
                 System.out.println("Email ID not found!!Please try again:");
-                System.exit(-2);
+//                System.exit(-2);
+                this.enterEmail();
             }
             for (Object aList : results)
             {
@@ -60,7 +78,7 @@ public class ExistingUser
                 FetchWatchList watchList = FetchWatchList.getFetchWatchListInstance();
                 watchList.setemail_ID(userprofile.getEmail_ID());
             }
-            sessionObj.getTransaction().commit();
+            //sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
