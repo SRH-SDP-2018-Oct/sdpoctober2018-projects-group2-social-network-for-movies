@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.Objects;
 
 @Embeddable
-public class CompositeKeyUserReview implements Serializable
+public class
+CompositeKeyUserReview implements Serializable
 {
     @Column(name = "email_ID")
     private String email_ID;

@@ -73,7 +73,7 @@ public class FetchMovieSearch {
                     long time = date.getTime();
                     Timestamp timestamp = new Timestamp(time);
                     System.out.println("Type review");
-                    String review=userchoice.next();
+                    String review=userchoice.nextLine();
                     InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
                     adduserreview.setUserReviews(this.movieID,review,timestamp);
                     break;

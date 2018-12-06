@@ -1,7 +1,7 @@
 package com.SNM.app.userinput;
 
 import com.SNM.app.crud.FetchWatchList;
-//import com.SNM.app.crud.InsertUserReviews;
+import com.SNM.app.crud.InsertUserReviews;
 import com.SNM.app.pojo.UserProfile;
 import com.SNM.app.utils.HibernateUtil;
 import com.SNM.app.validations.PasswordHash;
@@ -11,6 +11,8 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Scanner;
+
+//import com.SNM.app.crud.InsertUserReviews;
 
 public class ExistingUser
 {
@@ -78,7 +80,7 @@ public void enterPassword(){
                 System.out.println(hashPasswordDb);
                 FetchWatchList watchList = FetchWatchList.getFetchWatchListInstance();
                 watchList.setemail_ID(userprofile.getEmail_ID());
-                //InsertUserReviews.email_ID=userprofile.getEmail_ID();
+                InsertUserReviews.email_ID=userprofile.getEmail_ID();
             }
             //sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {

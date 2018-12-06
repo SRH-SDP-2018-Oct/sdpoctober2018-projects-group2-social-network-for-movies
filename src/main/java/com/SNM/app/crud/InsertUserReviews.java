@@ -39,11 +39,12 @@ public class InsertUserReviews {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
 
-            String sql = ":FROM UserReview userReview where userReview.movie_ID=:movie_ID";
+            String sql = "FROM UserReview userReview where userReview.movie_ID = :movie_ID";
             List list = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID).list();
             System.out.println("list: " + list);
             for (Object aList : list)
             {
+                userReview=(UserReview) aList;
                 System.out.println(aList);
 
             }
@@ -75,8 +76,6 @@ public class InsertUserReviews {
             sessionObj.save(addreview);
             sessionObj.flush();
             sessionObj.getTransaction().commit();
-        } catch (ConstraintViolationException sqlException) {
-            System.out.println("Movie already in your watchlist");
         } catch (Exception sqlException) {
             if (null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");

@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class FetchMoviesLanguage {
 
@@ -29,6 +30,10 @@ public class FetchMoviesLanguage {
             for (Object aList : list) {
                 System.out.println(aList);
             }
+            System.out.println("Enter the movie of your choice;");
+            Scanner input = new Scanner(System.in);
+            String search = input.nextLine();
+            FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(search);
             sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {
