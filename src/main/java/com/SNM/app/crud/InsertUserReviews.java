@@ -2,9 +2,12 @@ package com.SNM.app.crud;
 
 import com.SNM.app.pojo.CompositeKeyUserReview;
 import com.SNM.app.pojo.UserReview;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.exception.ConstraintViolationException;
+
+import javax.management.Query;
 import java.util.Date;
 import java.util.List;
 
@@ -39,13 +42,15 @@ public class InsertUserReviews {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
 
-            String sql = "FROM UserReview userReview where userReview.movie_ID = :movie_ID";
-            List list = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID).list();
+            String sql = "Select email_ID, timestamp, review FROM userreview  Where movie_ID = :movie_ID";
+            SQLQuery query = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID);
+            List<Object[]> list = (List<Object[]>)query.list();
             System.out.println("list: " + list);
-            for (Object aList : list)
+            for (Object[] aList : list)
+
             {
-                userReview=(UserReview) aList;
-                System.out.println(aList);
+                System.out.println((String) aList[0] + "@" + (java.sql.Timestamp)aList[1] + ":" +(String)aList[2]);
+                //System.out.println(userReview.getReview());
 
             }
             sessionObj.getTransaction().commit();

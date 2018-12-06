@@ -5,6 +5,10 @@ import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -73,7 +77,7 @@ public class FetchMovieSearch {
                     long time = date.getTime();
                     Timestamp timestamp = new Timestamp(time);
                     System.out.println("Type review");
-                    String review=userchoice.nextLine();
+                    String review=getContent();
                     InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
                     adduserreview.setUserReviews(this.movieID,review,timestamp);
                     break;
@@ -94,7 +98,17 @@ public class FetchMovieSearch {
             }
         }
     }
-
+    public String getContent()
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String content = null;
+        try {
+            content = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
     private void rateMovie() {
 
         System.out.println("Enter the value between 0-5:");
