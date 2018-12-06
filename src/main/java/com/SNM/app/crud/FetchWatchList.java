@@ -5,6 +5,8 @@ import com.SNM.app.pojo.Watchlist;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.exception.ConstraintViolationException;
+
 import java.util.List;
 
 public class FetchWatchList
@@ -50,6 +52,7 @@ public class FetchWatchList
             }
             sessionObj.getTransaction().commit();
         }
+
         catch(Exception sqlException)
         {
             if(null != sessionObj.getTransaction())
@@ -77,7 +80,12 @@ public class FetchWatchList
             sessionObj.save(addtolist);
             sessionObj.flush();
             sessionObj.getTransaction().commit();
-        } catch(Exception sqlException) {
+        }
+        catch(ConstraintViolationException sqlException)
+        {
+            System.out.println("Movie already in your watchlist");
+        }
+        catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
                 sessionObj.getTransaction().rollback();}

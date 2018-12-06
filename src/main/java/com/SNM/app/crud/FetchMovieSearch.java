@@ -47,11 +47,10 @@ public class FetchMovieSearch {
                 System.out.println("MovieName\t\t\t:" + movie);
                 System.out.println("Description\t\t\t:" + movies.getDescription());
                 System.out.println("CastAndCrew\t\t    :" + movies.getCast_and_crew());
-                System.out.println("UserRating\t\t    :" + movies.getRating());
                 System.out.println("CriticsReview\t\t:" + movies.getCritics_review());
                 System.out.println("ReleaseDetails\t\t:" + movies.getRelease_details());
                 System.out.println("CensorBoardRating\t:" + movies.getCensorboard_ratings());
-                System.out.println("UserRating\t\t    :" + (movies.getRating()/movies.getRatecount()));
+                System.out.println("UserRating\t\t    :" + movies.getRating()/movies.getRatecount());
                 System.out.println("No. of people rated:"+movies.getRatecount());
             }
             Scanner userchoice= new Scanner(System.in);
@@ -101,7 +100,10 @@ public class FetchMovieSearch {
             query1.setParameter("rate", rate);
             query1.setParameter("movie_ID", mov);
             int r = query1.executeUpdate();
-            System.out.println("rows affected\t" + r);
+            if (r>0){
+                //System.out.println("rows affected\t" + r);
+                System.out.println("Thanks for your rating!!");
+            }
             sessionob.getTransaction().commit();
         } catch (Exception sqlException) {
             if (null != sessionob.getTransaction()) {

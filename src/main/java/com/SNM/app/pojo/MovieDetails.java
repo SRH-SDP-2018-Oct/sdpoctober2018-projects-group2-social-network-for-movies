@@ -15,7 +15,7 @@ public class MovieDetails {
     @Column(name = "cast_and_crew")
     private String cast_and_crew;
     @Column(name = "rating")
-    private int rating;
+    private float rating;
     @Column(name = "critics_review")
     private String critics_review;
     @Column(name = "release_details")
@@ -61,11 +61,11 @@ public class MovieDetails {
         this.cast_and_crew = cast_and_crew;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

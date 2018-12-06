@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class FetchMoviesGenre {
 
@@ -29,6 +30,10 @@ public class FetchMoviesGenre {
                 System.out.println(aList);
             }
             sessionObj.getTransaction().commit();
+            System.out.println("Enter the movie of your choice;");
+            Scanner input = new Scanner(System.in);
+            String search = input.nextLine();
+            FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(search);
         } catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
