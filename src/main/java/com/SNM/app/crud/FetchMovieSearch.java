@@ -5,10 +5,10 @@ import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
+import java.sql.Timestamp;
 public class FetchMovieSearch {
     static Session sessionob;
     static SessionFactory sessionFactoryOb;
@@ -16,6 +16,7 @@ public class FetchMovieSearch {
     Scanner scanner = new Scanner(System.in);
     private int movieID;
     private int mov;
+    InsertUserReviews viewreview=new InsertUserReviews();
     public FetchMovieSearch(String movie_name) {
 
 
@@ -54,7 +55,7 @@ public class FetchMovieSearch {
                 System.out.println("No. of people rated:"+movies.getRatecount());
             }
             Scanner userchoice= new Scanner(System.in);
-            System.out.println("Enter your choice:\n1: Add to watch list\n2: Rate Movie");
+            System.out.println("Enter your choice:\n1: Add to watch list\n2: Rate Movie\n3: View Reviews\n4: Give Reviews");
             int userChoice=userchoice.nextInt();
             switch(userChoice) {
                 case (1):
@@ -64,11 +65,23 @@ public class FetchMovieSearch {
                 case (2):
                     rateMovie();
                     break;
+                case (3):
+                    viewreview.fetchUserReviews(this.movieID);
+                    break;
+                case(4):
+                    Date date= new Date();
+                    long time = date.getTime();
+                    Timestamp timestamp = new Timestamp(time);
+                    System.out.println("Type review");
+                    String review=userchoice.next();
+                    InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
+                    adduserreview.setUserReviews(this.movieID,review,timestamp);
+                    break;
                 default:
                     System.out.println("Application exit");
                     System.exit(0);
 
-            } //sessionob.getTransaction().commit();
+            } sessionob.getTransaction().commit();
         } catch (Exception sqlException) {
             if (null != sessionob.getTransaction()) {
                 System.out.println("Transaction is being rollback");
