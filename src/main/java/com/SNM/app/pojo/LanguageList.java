@@ -11,8 +11,8 @@ public class LanguageList {
     @OneToMany(cascade=CascadeType.ALL)
 
     @JoinColumns({
-            @JoinColumn(name="language"),
-            @JoinColumn(name = "movie_ID")
+            @JoinColumn(name= "language"),
+            @JoinColumn(name= "movie_ID")
     })
     private Set<MovieDetails> movies;
     public Set<MovieDetails> getMovies() { return movies; }
