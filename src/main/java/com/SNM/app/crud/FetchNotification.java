@@ -32,7 +32,7 @@ public class FetchNotification {
         {
             sessionob = hibernateUtil.buildSessionFactory().openSession();
             sessionob.beginTransaction();
-            String sql = "SELECT movie_name FROM test.genrelist g ,test.preferences p,test.moviedetail m where p.genre = g.genre and g.movie_ID= m.movie_ID and m.releasedate between :weekAgo and :now and and p.email_ID = :email";
+            String sql = "SELECT movie_name FROM test.genrelist g ,test.preferences p,test.moviedetail m where p.genre = g.genre and g.movie_ID= m.movie_ID and m.releasedate between :weekAgo and :now and p.email_ID = :email";
             Query query = sessionob.createSQLQuery(sql).setParameter("now", now).setParameter("weekAgo",weekAgo).setParameter("email",this.email);
             List results = query.list();
             System.out.println(results);

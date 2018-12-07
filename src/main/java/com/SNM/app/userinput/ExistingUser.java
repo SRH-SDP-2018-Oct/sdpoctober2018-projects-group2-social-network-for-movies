@@ -16,7 +16,8 @@ import java.util.Scanner;
 
 public class ExistingUser
 {
-    private String emailID,password,hashPasswordDb,hashPassword;
+    public static String emailID;
+    private String password,hashPasswordDb,hashPassword;
     private Session sessionObj;
     private SessionFactory sessionFactoryObj;
     public HibernateUtil hibernateUtil = new HibernateUtil();
@@ -54,7 +55,7 @@ public void enterPassword(){
         enterPassword();
     } else {
         System.out.println("Successfully LoggedIn");
-        HomePage homePage = new HomePage(this.emailID);
+        HomePage homePage = new HomePage();
     }
 
 }
