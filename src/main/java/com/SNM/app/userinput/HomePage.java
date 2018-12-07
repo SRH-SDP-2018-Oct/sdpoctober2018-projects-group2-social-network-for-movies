@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class HomePage
 
 {
+
     Scanner userchoice= new Scanner(System.in);
     private String genreofchoice;
     private String languageofchoice;
@@ -14,9 +15,9 @@ public class HomePage
     private String moviedetailsbasedonname;
     private String groupdetailsneeded,email;
 
-  HomePage(String email)
+  public HomePage()
   {
-            this.email=email;
+            this.email=ExistingUser.emailID;
           System.out.println("Enter your choice");
           System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist");
           int userChoice = userchoice.nextInt();

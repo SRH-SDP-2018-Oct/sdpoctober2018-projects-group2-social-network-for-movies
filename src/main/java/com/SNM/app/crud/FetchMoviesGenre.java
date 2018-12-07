@@ -1,5 +1,6 @@
 package com.SNM.app.crud;
 
+import com.SNM.app.userinput.HomePage;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +16,18 @@ public class FetchMoviesGenre {
     private String genre;
     public FetchMoviesGenre(String genreofchoice) {
         this.genre= genreofchoice;
-        fetchMoviesGenre();
+        Scanner usrChoice = new Scanner(System.in);
+        int choice = usrChoice.nextInt();
+        switch (choice)
+        {
+            case(1):
+                fetchMoviesGenre();
+                break;
+            case(2):
+                HomePage homePage = new HomePage();
+
+        }
+
     }
 
 
