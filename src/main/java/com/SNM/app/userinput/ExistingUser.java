@@ -54,7 +54,7 @@ public void enterPassword(){
         enterPassword();
     } else {
         System.out.println("Successfully LoggedIn");
-        HomePage homePage = new HomePage();
+        HomePage homePage = new HomePage(this.emailID);
     }
 
 }

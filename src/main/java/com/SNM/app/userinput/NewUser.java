@@ -13,7 +13,7 @@ public class NewUser
     private String username,first_name,last_name,email_ID,date;
     private String password,hashPassword;
     private int age;
-
+    private SetPreferences setPreferences = new SetPreferences();
 
     private Scanner userinput = new Scanner(System.in);
 
@@ -27,6 +27,7 @@ public class NewUser
         System.out.println("Enter your Last Name");
         this.last_name = userinput.nextLine();
         this.enterEmailID();
+        this.userPrefrence();
         this.password = enterPassword();
         this.hashPassword= hash.HashPassword(password);
         System.out.println("Enter your age");
@@ -34,6 +35,17 @@ public class NewUser
         user.setUserDetails(email_ID,first_name,last_name,hashPassword,age);
         System.out.println("User registration sucessfully done!!Please login again to use the application.");
         System.exit(0);
+    }
+
+    public void userPrefrence(){
+
+        System.out.println("Enter your preferred Genre(action/romance) and 0 to exit");
+        String preferdGenre = userinput.next();
+        if(!(preferdGenre.equals("0"))){
+            setPreferences.setPrefernce(preferdGenre,this.email_ID);
+            userPrefrence();
+        }
+
     }
 
     public void enterEmailID() {

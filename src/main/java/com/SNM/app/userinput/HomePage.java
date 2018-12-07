@@ -12,13 +12,13 @@ public class HomePage
     private String languageofchoice;
     private String moviedetailsneeded;
     private String moviedetailsbasedonname;
-    private String groupdetailsneeded;
+    private String groupdetailsneeded,email;
 
-  HomePage()
+  HomePage(String email)
   {
-
+            this.email=email;
           System.out.println("Enter your choice");
-          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Groups\n5: Movie Search\n6: Watchlist");
+          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist");
           int userChoice = userchoice.nextInt();
           switch (userChoice) {
               case (1):
@@ -39,10 +39,23 @@ public class HomePage
                   fetchTrendingMovies.fetchTrendingMovies();
                   break;
               case (4):
-                  System.out.println("List of all groups");
-                  //Fetch
-                  System.out.println("If you want to view a particular group,please select from the list");
-                  groupdetailsneeded = userchoice.nextLine();
+                  System.out.println("Notification about Release based on your preferences:");
+                        FetchNotification fetchNotification = new FetchNotification(email);
+                  System.out.println("1.Last week release information\n2.Last month release information\n3.Next week release information\n4.Next month release information\n");
+                  int notificationChoice = userchoice.nextInt();
+                  switch (notificationChoice)
+                  {
+                      case(1):fetchNotification.getPastWeek();
+                          break;
+                      case(2):fetchNotification.getPast30days();
+                          break;
+                      case(3):fetchNotification.getNextweek();
+                          break;
+                      case(4):fetchNotification.getNextMonth();
+                          break;
+                          default:
+                              break;
+                  }
                   break;
               case (5):
                   System.out.println("Please enter name of the Movie:");
@@ -59,6 +72,10 @@ public class HomePage
                   System.out.println("EXIT");
           }
   }
+
+
+
+
 }
 
 
