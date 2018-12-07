@@ -2,7 +2,6 @@ package com.SNM.app.userinput;
 
 import com.SNM.app.validations.PasswordHash;
 import com.SNM.app.crud.UserProfile;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class NewUser
 {
-    private String username,first_name,last_name,email_ID,date;
+    private String first_name,last_name,email_ID;
     private String password,hashPassword;
     private int age;
     private SetPreferences setPreferences = new SetPreferences();
@@ -59,6 +58,7 @@ public class NewUser
         while (!result) {
             System.out.println("Please enter a vaild email ID:\n");
             enterEmailID();
+
         }
 
     }
