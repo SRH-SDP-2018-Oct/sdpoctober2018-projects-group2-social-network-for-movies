@@ -21,7 +21,7 @@ public class CredentialsValidation
             while (!result)
             {
                 System.out.println("Email ID validation failed.Please re-try\n");
-                ref.enterEmailID();
+
             }
 
             Random r=new Random();
