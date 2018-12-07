@@ -81,7 +81,8 @@ public class FetchMovieSearch {
                     InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
                     adduserreview.setUserReviews(this.movieID,review,timestamp);
                     break;
-                default:
+
+                    default:
                     System.out.println("Application exit");
                     System.exit(0);
 

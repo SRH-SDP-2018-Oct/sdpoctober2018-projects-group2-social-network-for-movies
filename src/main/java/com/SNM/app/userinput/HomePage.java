@@ -1,6 +1,8 @@
 package com.SNM.app.userinput;
 
 import com.SNM.app.crud.*;
+import com.SNM.app.dynamicjasper.Jasper;
+import com.SNM.app.dynamicjasper.ReviewComment;
 
 import java.util.Scanner;
 
@@ -19,7 +21,7 @@ public class HomePage
   {
             this.email=ExistingUser.emailID;
           System.out.println("Enter your choice");
-          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist");
+          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist\n7: Reports\n");
           int userChoice = userchoice.nextInt();
           switch (userChoice) {
               case (1):
@@ -69,7 +71,18 @@ public class HomePage
                   FetchWatchList viewwatchlist = FetchWatchList.getFetchWatchListInstance();
                   viewwatchlist.fetchWatchList();
                   break;
-              default:
+              case (7):
+                  System.out.println("View Reports");
+                  System.out.println("1.Movie Details based on genre 2.Review Comments based on movie");
+                  int choice = userchoice.nextInt();
+                  if (choice == 1){
+                    Jasper jasper = new Jasper();
+                  }
+                  else
+              {
+                      ReviewComment reviewComment = new ReviewComment();}
+                  break;
+                  default:
                   System.out.println("EXIT");
           }
   }
