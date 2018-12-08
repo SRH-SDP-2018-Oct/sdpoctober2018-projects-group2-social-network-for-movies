@@ -9,11 +9,11 @@ public class PasswordHash {
 
     {
         String generatedPassword = null;
-        MessageDigest md;
+        MessageDigest messageDigest;
         try {
-            md = MessageDigest.getInstance("MD5");
-            md.update(passwordToHash.getBytes());
-            byte[] bytes = md.digest();
+            messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(passwordToHash.getBytes());
+            byte[] bytes = messageDigest.digest();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < bytes.length; i++) {
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
@@ -21,8 +21,8 @@ public class PasswordHash {
             generatedPassword = sb.toString();
             System.out.println("Hash Pw:   "+generatedPassword);
         }
-        catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        catch (NoSuchAlgorithmException exception) {
+            exception.printStackTrace();
         }
         return generatedPassword;
     }

@@ -14,7 +14,7 @@ public class SetPreferences
     HibernateUtil hibernateUtil = new HibernateUtil();
     private String email_ID,movie_ID;
 
-    public void setPrefernce(String genre, String email)
+    public void setPreference(String genre, String email)
     {
         email_ID = email;
         Preferences preferences = new Preferences();

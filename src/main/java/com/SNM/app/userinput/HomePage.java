@@ -1,9 +1,11 @@
 package com.SNM.app.userinput;
 
+import com.SNM.app.globalsearch.GlobalSearch;
 import com.SNM.app.crud.*;
 import com.SNM.app.dynamicjasper.Jasper;
 import com.SNM.app.dynamicjasper.ReviewComment;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class HomePage
@@ -17,11 +19,10 @@ public class HomePage
     private String moviedetailsbasedonname;
     private String groupdetailsneeded,email;
 
-  public HomePage()
-  {
+  public HomePage() throws IOException {
             this.email=ExistingUser.emailID;
           System.out.println("Enter your choice");
-          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist\n7: Reports\n");
+          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist\n7: Reports\n8: GlobalSearch");
           int userChoice = userchoice.nextInt();
           switch (userChoice) {
               case (1):
@@ -80,7 +81,10 @@ public class HomePage
                   }
                   else
               {
-                      ReviewComment reviewComment = new ReviewComment();}
+                  ReviewComment reviewComment = new ReviewComment();}
+                  break;
+              case (8):
+                  GlobalSearch search=new GlobalSearch();
                   break;
                   default:
                   System.out.println("EXIT");

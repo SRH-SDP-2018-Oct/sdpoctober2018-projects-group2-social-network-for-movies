@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -55,7 +56,11 @@ public void enterPassword(){
         enterPassword();
     } else {
         System.out.println("Successfully LoggedIn");
-        HomePage homePage = new HomePage();
+        try {
+            HomePage homePage = new HomePage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -20,11 +20,10 @@ public class FetchMovieSearch {
     HibernateUtil hibernateUtil=new HibernateUtil();
     Scanner scanner = new Scanner(System.in);
     private int movieID;
-    private int mov;
+    private int movie;
     InsertUserReviews viewreview=new InsertUserReviews();
-    public FetchMovieSearch(String movie_name) {
-
-
+    public FetchMovieSearch(String movie_name)
+    {
         fetchMovieDetails(movie_name);
     }
 
@@ -42,13 +41,13 @@ public class FetchMovieSearch {
             {
                 System.out.println("Please Enter Valid Movie Name");
                 System.out.println("Movie not found, please try again:");
-                String mov = scanner.next();
-                fetchMovieDetails(mov);
+                String moviename = scanner.next();
+                fetchMovieDetails(moviename);
             }
             for (Object aList : results) {
                 movies = (MovieDetails) aList;
                 System.out.println("MovieID\t\t\t    :" + movies.getMovie_ID());
-                this.mov=movies.getMovie_ID();
+                this.movie=movies.getMovie_ID();
                 movieID = movies.getMovie_ID();
                 System.out.println("MovieName\t\t\t:" + movie);
                 System.out.println("Description\t\t\t:" + movies.getDescription());
@@ -58,6 +57,9 @@ public class FetchMovieSearch {
                 System.out.println("CensorBoardRating\t:" + movies.getCensorboard_ratings());
                 System.out.println("UserRating\t\t    :" + movies.getRating()/movies.getRatecount());
                 System.out.println("No. of people rated:"+movies.getRatecount());
+                System.out.println("Genres\t\t\t    :"+movies.getGenres());
+                System.out.println("Languages\t\t\t:"+movies.getLanguages());
+                System.out.println("ReleaseDate\t\t  :"+movies.getReleasedate());
             }
             Scanner userchoice= new Scanner(System.in);
             System.out.println("Enter your choice:\n1: Add to watch list\n2: Rate Movie\n3: View Reviews\n4: Give Reviews\n5: Go back to homepage");
@@ -89,11 +91,11 @@ public class FetchMovieSearch {
                     System.out.println("Application exit");
                     System.exit(0);
 
-            } sessionob.getTransaction().commit();
+            }
         } catch (Exception sqlException) {
             if (null != sessionob.getTransaction()) {
                 System.out.println("Transaction is being rollback");
-                //sessionob.getTransaction().rollback();
+
             }
             sqlException.printStackTrace();
         } finally {
@@ -129,7 +131,7 @@ public class FetchMovieSearch {
                     "WHERE movie_ID = :movie_ID";
             Query query1 = sessionob.createSQLQuery(hql1);
             query1.setParameter("rate", rate);
-            query1.setParameter("movie_ID", mov);
+            query1.setParameter("movie_ID", movie);
             int r = query1.executeUpdate();
             if (r>0){
                 //System.out.println("rows affected\t" + r);

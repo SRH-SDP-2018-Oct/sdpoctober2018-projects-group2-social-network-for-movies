@@ -43,7 +43,7 @@ public class NewUser
         System.out.println("Enter your preferred Genre(action/romance) and 0 to exit");
         String preferdGenre = userinput.next();
         if(!(preferdGenre.equals("0"))){
-            setPreferences.setPrefernce(preferdGenre,this.email_ID);
+            setPreferences.setPreference(preferdGenre,this.email_ID);
             userPrefrence();
         }
 
@@ -60,7 +60,6 @@ public class NewUser
         while (!result) {
             System.out.println("Please enter a vaild email ID:\n");
             enterEmailID();
-
         }
 
     }
