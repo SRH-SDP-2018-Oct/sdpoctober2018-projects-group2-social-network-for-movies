@@ -1,4 +1,4 @@
-package com.SNM.app.GlobalSearch;
+package com.SNM.app.globalsearch;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -14,19 +14,14 @@ public class GlobalSearch {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the movie to be searched in internet:  ");
         String searchTerm = scanner.nextLine();
-//        System.out.println("Please enter the number of results. Example: 5 10 20");
-//        int num = scanner.nextInt();
-//        scanner.close();
-//        String searchURL = GOOGLE_SEARCH_URL + "?q="+searchTerm+"&num="+num;
         String searchURL = GOOGLE_SEARCH_URL + "?q="+searchTerm+"&num=10";
-        Document doc = Jsoup.connect(searchURL).userAgent("Mozilla/5.0").get();
-        Elements results = doc.select("h3.r > a");
+        Document document = Jsoup.connect(searchURL).userAgent("Mozilla/5.0").get();
+        Elements results = document.select("h3.r > a");
         for (Element result : results) {
             String linkHref = result.attr("href");
             String linkText = result.text();
             System.out.println("Text::" + linkText + ", URL::" + linkHref.substring(6, linkHref.indexOf("&")));
         }
     }
-
 
 }

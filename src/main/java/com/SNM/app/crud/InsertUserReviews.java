@@ -41,21 +41,20 @@ public class InsertUserReviews {
         {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
-
             String sql = "Select email_ID,timestamp,review FROM userreview  Where movie_ID = :movie_ID";
             SQLQuery query = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID);
             List<Object[]> list = (List<Object[]>)query.list();
-            System.out.println("list: " + list);
+            // System.out.println("list: " + list);
             for (Object[] aList : list)
-
             {
-                System.out.println((String) aList[0] + "@" + (java.sql.Timestamp)aList[1] + ":" +(String)aList[2]);
-                //System.out.println(userReview.getReview());
-
+                System.out.println((String) aList[0] + "@" + (java.sql.Timestamp)aList[1] + ":\t" +(String)aList[2]);
             }
             sessionObj.getTransaction().commit();
-        } catch (Exception sqlException) {
-            if (null != sessionObj.getTransaction()) {
+        }
+        catch (Exception sqlException)
+        {
+            if (null != sessionObj.getTransaction())
+            {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
                 sessionObj.getTransaction().rollback();
             }
@@ -89,7 +88,8 @@ public class InsertUserReviews {
 
             sqlException.printStackTrace();
         } finally {
-            if (sessionObj != null) {
+            if (sessionObj != null)
+            {
                 sessionObj.close();
             }
         }

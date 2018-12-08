@@ -1,6 +1,6 @@
 package com.SNM.app.userinput;
 
-import com.SNM.app.GlobalSearch.GlobalSearch;
+import com.SNM.app.globalsearch.GlobalSearch;
 import com.SNM.app.crud.*;
 import com.SNM.app.dynamicjasper.Jasper;
 import com.SNM.app.dynamicjasper.ReviewComment;
@@ -81,7 +81,7 @@ public class HomePage
                   }
                   else
               {
-                      ReviewComment reviewComment = new ReviewComment();}
+                  ReviewComment reviewComment = new ReviewComment();}
                   break;
               case (8):
                   GlobalSearch search=new GlobalSearch();

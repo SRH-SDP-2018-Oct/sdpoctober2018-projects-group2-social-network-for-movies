@@ -1,6 +1,8 @@
 package com.SNM.app.pojo;
 
 import javax.persistence.*;
+import java.util.Date;
+
 @Entity
 @Table(name = "moviedetail")
 
@@ -18,12 +20,42 @@ public class MovieDetails {
     private float rating;
     @Column(name = "critics_review")
     private String critics_review;
+    @Column(name = "genres")
+    private String genres;
+    @Column(name = "languages")
+    private String languages;
+    @Column(name = "releasedate")
+    private Date releasedate;
     @Column(name = "release_details")
     private String release_details;
     @Column(name = "censorboard_ratings")
     private String censorboard_ratings;
     @Column(name = "ratecount")
     private int ratecount;
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+
+    public String getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
+
+    public Date getReleasedate() {
+        return releasedate;
+    }
+
+    public void setReleasedate(Date releasedate) {
+        this.releasedate = releasedate;
+    }
 
     public int getRatecount() {  return ratecount; }
 
