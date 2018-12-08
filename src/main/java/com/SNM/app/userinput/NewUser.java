@@ -1,5 +1,6 @@
 package com.SNM.app.userinput;
 
+import com.SNM.app.main.ImplementSNM;
 import com.SNM.app.validations.PasswordHash;
 import com.SNM.app.crud.UserProfile;
 import java.util.Scanner;
@@ -60,7 +61,6 @@ public class NewUser
         while (!result) {
             System.out.println("Please enter a vaild email ID:\n");
             enterEmailID();
-
         }
 
     }
