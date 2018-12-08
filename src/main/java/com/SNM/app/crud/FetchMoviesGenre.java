@@ -14,20 +14,10 @@ public class FetchMoviesGenre {
     private SessionFactory sessionFactoryObj;
     private HibernateUtil hibernateUtil = new HibernateUtil();
     private String genre;
-    public FetchMoviesGenre(String genreofchoice) {
+    public FetchMoviesGenre(String genreofchoice)
+    {
         this.genre= genreofchoice;
-        Scanner usrChoice = new Scanner(System.in);
-        int choice = usrChoice.nextInt();
-        switch (choice)
-        {
-            case(1):
-                fetchMoviesGenre();
-                break;
-            case(2):
-                HomePage homePage = new HomePage();
-
-        }
-
+        fetchMoviesGenre();
     }
 
 
