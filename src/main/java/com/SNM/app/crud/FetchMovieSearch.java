@@ -84,13 +84,6 @@ public class FetchMovieSearch {
                     InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
                     adduserreview.setUserReviews(this.movieID,review,timestamp);
                     break;
-                case (5):
-                    HomePage back=new HomePage();
-                    break;
-                    default:
-                    System.out.println("Application exit");
-                    System.exit(0);
-
             }
         } catch (Exception sqlException) {
             if (null != sessionob.getTransaction()) {

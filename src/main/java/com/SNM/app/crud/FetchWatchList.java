@@ -71,40 +71,11 @@ public class FetchWatchList {
             sessionObj.flush();
             sessionObj.getTransaction().commit();
             System.out.println("Movie added to your watchlist");
-        } catch (Exception sqlException)
+        }catch (Exception sqlException)
         {
             System.out.println("Error" + sqlException);
-            sessionObj.getTransaction().rollback();
-            //sqlException.printStackTrace();
-        }
-        finally
-        {
-            if (sessionObj != null)
-            {
-                Scanner option = new Scanner(System.in);
-                System.out.println("Movie already added.\nChoose\n1: Add another movie\n2:Go to HomePage");
-                int optionbyuser = option.nextInt();
-                switch (optionbyuser) {
-                    case (1):
-                        System.out.println("Enter movie name:");
-                        String anothermovie = option.next();
-                        FetchMovieSearch select = new FetchMovieSearch(anothermovie);
-                        break;
-                    case (2):
-                        try
-                        {
-                            HomePage redirect = new HomePage();
-                        }
-                        catch (IOException e)
-                        {
-                            e.printStackTrace();
-                        }
-                        break;
-                    default:
-                        sessionObj.close();
-                }
-            }
-        }
+            System.out.println("Movie is already added to the watchlist, Redirected to Homepage.");
 
+        }
     }
 }

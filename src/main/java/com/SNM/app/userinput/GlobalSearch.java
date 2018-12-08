@@ -1,4 +1,4 @@
-package com.SNM.app.globalsearch;
+package com.SNM.app.userinput;
 
 import java.io.IOException;
 import java.util.Scanner;
