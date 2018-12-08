@@ -13,7 +13,8 @@ public class FetchMoviesGenre {
     private SessionFactory sessionFactoryObj;
     private HibernateUtil hibernateUtil = new HibernateUtil();
     private String genre;
-    public FetchMoviesGenre(String genreofchoice) {
+    public FetchMoviesGenre(String genreofchoice)
+    {
         this.genre= genreofchoice;
         fetchMoviesGenre();
     }

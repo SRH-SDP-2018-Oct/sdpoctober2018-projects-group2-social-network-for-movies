@@ -1,6 +1,7 @@
 package com.SNM.app.crud;
 
 import com.SNM.app.pojo.MovieDetails;
+import com.SNM.app.userinput.HomePage;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,7 +60,7 @@ public class FetchMovieSearch {
                 System.out.println("No. of people rated:"+movies.getRatecount());
             }
             Scanner userchoice= new Scanner(System.in);
-            System.out.println("Enter your choice:\n1: Add to watch list\n2: Rate Movie\n3: View Reviews\n4: Give Reviews");
+            System.out.println("Enter your choice:\n1: Add to watch list\n2: Rate Movie\n3: View Reviews\n4: Give Reviews\n5: Go back to homepage");
             int userChoice=userchoice.nextInt();
             switch(userChoice) {
                 case (1):
@@ -81,7 +82,9 @@ public class FetchMovieSearch {
                     InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
                     adduserreview.setUserReviews(this.movieID,review,timestamp);
                     break;
-
+                case (5):
+                    HomePage back=new HomePage();
+                    break;
                     default:
                     System.out.println("Application exit");
                     System.exit(0);

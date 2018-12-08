@@ -80,15 +80,21 @@ public class FetchWatchList
             sessionObj.save(addtolist);
             sessionObj.flush();
             sessionObj.getTransaction().commit();
+            System.out.println("Movie added to your watchlist");
+
         }
+
         catch(ConstraintViolationException sqlException)
         {
             System.out.println("Movie already in your watchlist");
         }
         catch(Exception sqlException) {
-            if(null != sessionObj.getTransaction()) {
-                System.out.println("\n.......Transaction Is Being Rolled Back.......");
-                sessionObj.getTransaction().rollback();}
+            if(null != sessionObj.getTransaction())
+        {
+            System.out.println("Movie already in your watchlist");
+            System.out.println("\n.......Transaction Is Being Rolled Back.......");
+            sessionObj.getTransaction().rollback();
+        }
 
             sqlException.printStackTrace();
         } finally {

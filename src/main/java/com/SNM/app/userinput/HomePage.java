@@ -21,7 +21,7 @@ public class HomePage
   {
             this.email=ExistingUser.emailID;
           System.out.println("Enter your choice");
-          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search in SNM database\n6: Watchlist\n7: Reports\n8: Globally search a movie\n");
+          System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist\n7: Reports\n");
           int userChoice = userchoice.nextInt();
           switch (userChoice) {
               case (1):
@@ -82,7 +82,6 @@ public class HomePage
               {
                       ReviewComment reviewComment = new ReviewComment();}
                   break;
-              case(8):
                   default:
                   System.out.println("EXIT");
           }

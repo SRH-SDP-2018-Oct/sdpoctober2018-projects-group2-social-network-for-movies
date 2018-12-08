@@ -42,7 +42,7 @@ public class InsertUserReviews {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
 
-            String sql = "Select email_ID, timestamp, review FROM userreview  Where movie_ID = :movie_ID";
+            String sql = "Select email_ID,timestamp,review FROM userreview  Where movie_ID = :movie_ID";
             SQLQuery query = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID);
             List<Object[]> list = (List<Object[]>)query.list();
             System.out.println("list: " + list);
