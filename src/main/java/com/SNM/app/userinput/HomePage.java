@@ -18,20 +18,21 @@ public class HomePage {
 
     public HomePage() throws IOException {
         this.email = ExistingUser.emailID;
-        while (true) {
+        boolean i=true;
+        while (i) {
             System.out.println("Enter your choice");
-            System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist\n7: Reports\n8: GlobalSearch");
+            System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: Watchlist\n7: Reports\n8: GlobalSearch\n9: Exit\n");
             int userChoice = userchoice.nextInt();
             switch (userChoice) {
                 case (1):
-                    System.out.println("Genres available:\nAction\nRomance");
+                    System.out.println("Genres available:\nAction\nRomance\nAdventure\nFantasy\nCrime\nDrama\nThriller\nScience Fiction\nHistory\nWar\nComedy\nBiography\nSport\n");
                     System.out.println("Choose a particular genre:");
                     genreofchoice = userchoice.next();
                     FetchMoviesGenre fetchMoviesGenre = new FetchMoviesGenre(genreofchoice);
                     break;
                 case (2):
                     System.out.println("Languages available");
-                    System.out.println("Kannada ka\nEnglish en\nPlease enter your choice:");
+                    System.out.println("English en\nKannada ka\nHindi hi\nTelugu te\nTamil ta\nMalyalam ma\nGerman ge\nSpanish sp\nFrench fr\nItalian it\nPlease enter your choice:");
                     languageofchoice = userchoice.next();
                     FetchMoviesLanguage fetchMoviesLanguage = new FetchMoviesLanguage(languageofchoice);
                     break;
@@ -74,17 +75,24 @@ public class HomePage {
                     viewwatchlist.fetchWatchList();
                     break;
                 case (7):
-                    System.out.println("View Reports");
-                    System.out.println("1.Movie Details based on genre 2.Review Comments based on movie");
-                    int choice = userchoice.nextInt();
-                    if (choice == 1) {
-                        Jasper jasper = new Jasper();
-                    } else {
-                        ReviewComment reviewComment = new ReviewComment();
-                    }
-                    break;
+
+                        System.out.println("View Reports");
+                        System.out.println("1.Movie Details based on your genre\n 2.Review Comments based on movie");
+                        int choice = userchoice.nextInt();
+                        if (choice == 1) {
+                            Jasper jasper = new Jasper();
+                        } else if (choice == 2) {
+                            ReviewComment reviewComment = new ReviewComment();
+                        }
+
+                        break;
+
                 case (8):
                     GlobalSearch search = new GlobalSearch();
+                    break;
+                case(9):
+                    i=false;
+                    System.out.println("Auf wiedersehen!!");
                     break;
                 default:
                     System.out.println("EXIT");

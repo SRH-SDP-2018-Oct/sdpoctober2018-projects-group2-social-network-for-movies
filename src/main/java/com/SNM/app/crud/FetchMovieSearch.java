@@ -1,7 +1,6 @@
 package com.SNM.app.crud;
 
 import com.SNM.app.pojo.MovieDetails;
-import com.SNM.app.userinput.HomePage;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,6 +26,9 @@ public class FetchMovieSearch {
         fetchMovieDetails(movie_name);
     }
 
+
+    public FetchMovieSearch() {
+    }
 
     public void fetchMovieDetails(String movie) {
         MovieDetails movies;
@@ -59,7 +61,9 @@ public class FetchMovieSearch {
                 System.out.println("No. of people rated:"+movies.getRatecount());
                 System.out.println("Genres\t\t\t    :"+movies.getGenres());
                 System.out.println("Languages\t\t\t:"+movies.getLanguages());
-                System.out.println("ReleaseDate\t\t  :"+movies.getReleasedate());
+                String rdate=movies.getReleasedate().toString();
+                String[] date = rdate.split(" ");
+                System.out.println("ReleaseDate\t\t    :"+date[0]);
             }
             Scanner userchoice= new Scanner(System.in);
             System.out.println("Enter your choice:\n1: Add to watch list\n2: Rate Movie\n3: View Reviews\n4: Give Reviews\n5: Go back to homepage");
@@ -96,6 +100,7 @@ public class FetchMovieSearch {
                 sessionob.close();
             }
         }
+
     }
     public String getContent()
     {
@@ -110,10 +115,10 @@ public class FetchMovieSearch {
     }
     private void rateMovie() {
 
-        System.out.println("Enter the value between 0-5:");
+        System.out.println("Enter the value between 0-10:");
         Scanner scanner = new Scanner(System.in);
-        int rate = scanner.nextInt();
-        if(rate<0 || rate>5){
+        float rate = scanner.nextFloat();
+        if(rate<0 || rate>10){
             System.out.println("Please enter a valid value");
             rateMovie();
         }
