@@ -27,7 +27,7 @@ public class FetchMoviesGenre {
             sessionObj.beginTransaction();
             String sql ="select distinct m.movie_name from moviedetail m join genrelist g on g.genre= :genre and g.movie_ID= m.movie_ID";
             List list = sessionObj.createSQLQuery(sql).setParameter("genre",genre).list();
-            System.out.println("list: " + list);
+            //System.out.println("list: " + list);
             for (Object aList : list) {
                 System.out.println(aList);
             }

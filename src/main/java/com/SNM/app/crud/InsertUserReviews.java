@@ -80,6 +80,7 @@ public class InsertUserReviews {
             sessionObj.save(addreview);
             sessionObj.flush();
             sessionObj.getTransaction().commit();
+            System.out.println("Thanks for your review!!");
         } catch (Exception sqlException) {
             if (null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
