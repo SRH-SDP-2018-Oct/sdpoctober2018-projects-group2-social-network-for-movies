@@ -13,21 +13,21 @@ public class ImplementSNM {
         System.out.println("........................................\n");
         appStart();
     }
-    public static void appStart()
+    private static void appStart()
     {
         Scanner userinput = new Scanner(System.in);
         System.out.println("Select an option:\n1. For Existing User\n2. For New User");
         String choice = userinput.next();
-        if(choice.equals("2"))
-        {
-            NewUser newuser = new NewUser();
-        }
-        else if(choice.equals("1"))
-        {
-            ExistingUser existinguser = new ExistingUser();
-        }
-        else{
-            appStart();
+        switch (choice) {
+            case "2":
+                new NewUser();
+                break;
+            case "1":
+                new ExistingUser();
+                break;
+            default:
+                appStart();
+                break;
         }
     }
 }

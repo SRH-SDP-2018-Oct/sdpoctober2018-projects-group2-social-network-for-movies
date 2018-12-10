@@ -6,7 +6,6 @@ import com.SNM.app.pojo.UserProfile;
 import com.SNM.app.utils.HibernateUtil;
 import com.SNM.app.validations.PasswordHash;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.io.IOException;
@@ -18,33 +17,32 @@ import java.util.Scanner;
 public class ExistingUser
 {
     public static String emailID;
-    private String password,hashPasswordDb,hashPassword;
+    private String hashPasswordDb;
     private Session sessionObj;
-    private SessionFactory sessionFactoryObj;
     public HibernateUtil hibernateUtil = new HibernateUtil();
-    PasswordHash passwordhash = new PasswordHash();
+    private PasswordHash passwordhash = new PasswordHash();
 
 
     public ExistingUser() {
         this.enterEmail();
     }
 
-    public void enterEmail(){
+    private void enterEmail(){
         Scanner useremailID = new Scanner(System.in);
         System.out.println("Enter your email-ID to login :");
-        this.emailID = useremailID.next();
+        emailID = useremailID.next();
         this.getDetails();
         this.enterPassword();
 
     }
 
-    int countDown =2;
-public void enterPassword(){
+    private int countDown =2;
+private void enterPassword(){
     Scanner useremailID = new Scanner(System.in);
     System.out.println("Enter your password :");
-    this.password = useremailID.next();
-    System.out.println(password );
-    hashPassword = passwordhash.HashPassword(password);
+    String password = useremailID.next();
+    System.out.println(password);
+    String hashPassword = passwordhash.HashPassword(password);
     System.out.println(hashPassword);
     if (!(hashPasswordDb.equals(hashPassword)) ) {
         if(countDown == 0){
@@ -57,7 +55,7 @@ public void enterPassword(){
     } else {
         System.out.println("Login Successful!");
         try {
-            HomePage homePage = new HomePage();
+            new HomePage();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,7 +66,7 @@ public void enterPassword(){
     {
         UserProfile userprofile;
         try {
-            sessionObj = hibernateUtil.buildSessionFactory().openSession();
+            sessionObj = HibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
             String hql = "FROM UserProfile userprofile WHERE userprofile.email_ID= :email_ID";
             Query query = sessionObj.createQuery(hql).setParameter("email_ID", emailID);
@@ -84,11 +82,11 @@ public void enterPassword(){
                 userprofile = (UserProfile) aList;
                 this.hashPasswordDb = userprofile.getPassword();
                 System.out.println(hashPasswordDb);
-                FetchWatchList watchList = FetchWatchList.getFetchWatchListInstance();
-                watchList.setemail_ID(userprofile.getEmail_ID());
+                FetchWatchList.getFetchWatchListInstance();
+                FetchWatchList.setemail_ID(userprofile.getEmail_ID());
                 InsertUserReviews.email_ID=userprofile.getEmail_ID();
             }
-            //sessionObj.getTransaction().commit();
+
         } catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");

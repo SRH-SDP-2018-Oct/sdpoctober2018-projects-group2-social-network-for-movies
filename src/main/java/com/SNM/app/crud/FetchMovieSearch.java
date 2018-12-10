@@ -1,6 +1,7 @@
 package com.SNM.app.crud;
 
 import com.SNM.app.pojo.MovieDetails;
+import com.SNM.app.userinput.GlobalSearch;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,10 +10,10 @@ import org.hibernate.query.Query;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import java.sql.Timestamp;
 public class FetchMovieSearch {
     static Session sessionob;
     static SessionFactory sessionFactoryOb;
@@ -41,11 +42,10 @@ public class FetchMovieSearch {
             List results = query.list();
             if (results.isEmpty())
             {
-                System.out.println("Please Enter Valid Movie Name");
-                System.out.println("Movie not found, please try again:");
-                String moviename = scanner.next();
-                fetchMovieDetails(moviename);
+                System.out.println("Movie not found, please try our global search option");
+                new GlobalSearch();
             }
+            else{
             for (Object aList : results) {
                 movies = (MovieDetails) aList;
                 System.out.println("MovieID\t\t\t    :" + movies.getMovie_ID());
@@ -88,7 +88,7 @@ public class FetchMovieSearch {
                     InsertUserReviews adduserreview=InsertUserReviews.getInsertUserReviewsinstance();
                     adduserreview.setUserReviews(this.movieID,review,timestamp);
                     break;
-            }
+            }}
         } catch (Exception sqlException) {
             if (null != sessionob.getTransaction()) {
                 System.out.println("Transaction is being rollback");
