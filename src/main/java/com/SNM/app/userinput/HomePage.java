@@ -7,6 +7,8 @@ import com.SNM.app.dynamicjasper.ReviewComment;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class HomePage {
@@ -28,16 +30,51 @@ public class HomePage {
                     System.out.println("-----------------");
                     System.out.println("Action\nAdventure\nBiography\nComedy\nCrime\nDrama\nFamily\nFantasy\nHistory\nRomance\nScience Fiction\nSport\nWar\n");
                     System.out.println("Enter your choice of genre :");
-                    String genreofchoice = userchoice.next();
-                    FetchMoviesGenre fetchMoviesGenre = new FetchMoviesGenre(genreofchoice);
+                    List<String> genre = new ArrayList<String>();
+                    genre.add("action");
+                    genre.add("adventure");
+                    genre.add("biography");
+                    genre.add("comedy");
+                    genre.add("crime");
+                    genre.add("drama");
+                    genre.add("family");
+                    genre.add("fantasy");
+                    genre.add("history");
+                    genre.add("romance");
+                    genre.add("science fiction");
+                    genre.add("sport");
+                    genre.add("war");
+                    String genreofchoice = userchoice.next().toLowerCase();
+                    if(genre.contains(genreofchoice)){
+                        new FetchMoviesGenre(genreofchoice);
+                    }
+                    else {
+                        System.out.println("Genre not found");
+                    }
                     break;
                 case ("2"):
                     System.out.println("Languages available:");
                     System.out.println("--------------------");
-                    System.out.println("en - English en\nka - Kannada\nhi - Hindi\nte - Telugu\nta - Tamil\nma - Malyalam\nge - German\nsp - Spanish\nfr - French\nit - Italian\n");
+                    System.out.println("en - English\nka - Kannada\nhi - Hindi\nte - Telugu\nta - Tamil\nma - Malyalam\nde - German\nsp - Spanish\nfr - French\nit - Italian\n");
                     System.out.println("Enter your choice of language : Example, Press en for English");
+                    List<String> language = new ArrayList<String>();
+                    language.add("en");
+                    language.add("ka");
+                    language.add("hi");
+                    language.add("te");
+                    language.add("ta");
+                    language.add("ma");
+                    language.add("de");
+                    language.add("sp");
+                    language.add("fr");
+                    language.add("it");
                     String languageofchoice = userchoice.next();
-                    FetchMoviesLanguage fetchMoviesLanguage = new FetchMoviesLanguage(languageofchoice);
+                    if(language.contains(languageofchoice)){
+                        new FetchMoviesLanguage(languageofchoice);
+                    }
+                    else{
+                        System.out.println("Language not found");
+                    }
                     break;
                 case ("3"):
                     System.out.println("List of all trending movies");
@@ -69,7 +106,7 @@ public class HomePage {
                 case ("5"):
                     System.out.println("Please enter name of the Movie :");
                     String moviedetailsbasedonname = readComp();
-                    FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(moviedetailsbasedonname);
+                    new FetchMovieSearch(moviedetailsbasedonname);
                     break;
                 case ("6"):
                     System.out.println("View Watchlist");

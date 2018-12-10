@@ -2,22 +2,18 @@ package com.SNM.app.crud;
 
 import com.SNM.app.pojo.CompositeKeyWatchList;
 import com.SNM.app.pojo.Watchlist;
-import com.SNM.app.userinput.HomePage;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class FetchWatchList {
     Scanner option = new Scanner(System.in);
     private Session sessionObj;
-    private SessionFactory sessionFactoryObj;
     HibernateUtil hibernateUtil = new HibernateUtil();
     private static FetchWatchList fetchWatchList;
-    private static String email_ID, movie_ID;
+    private static String email_ID;
 
     public FetchWatchList()
     { }
@@ -34,7 +30,7 @@ public class FetchWatchList {
     }
 
     public void fetchWatchList() {
-        Watchlist watchlist = new Watchlist();
+       new Watchlist();
 
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();

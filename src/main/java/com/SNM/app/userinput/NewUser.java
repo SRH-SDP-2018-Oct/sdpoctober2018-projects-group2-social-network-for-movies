@@ -33,7 +33,7 @@ public class NewUser
         this.age = userinput.nextInt();
         user.setUserDetails(email_ID,first_name,last_name,hashPassword,age);
         System.out.println("User registration successful ! Please login with your email-id and password\n");
-        ExistingUser redirected=new ExistingUser();
+        new ExistingUser();
         System.exit(0);
 
     }

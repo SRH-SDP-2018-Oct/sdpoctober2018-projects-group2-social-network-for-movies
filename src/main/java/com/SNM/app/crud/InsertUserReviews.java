@@ -5,9 +5,6 @@ import com.SNM.app.pojo.UserReview;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import com.SNM.app.utils.HibernateUtil;
-import org.hibernate.exception.ConstraintViolationException;
-
-import javax.management.Query;
 import java.util.Date;
 import java.util.List;
 
@@ -35,8 +32,6 @@ public class InsertUserReviews {
 
     public void fetchUserReviews(int movie_ID)
     {
-        UserReview userReview;
-
         try
         {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
@@ -44,7 +39,6 @@ public class InsertUserReviews {
             String sql = "Select email_ID,timestamp,review FROM userreview  Where movie_ID = :movie_ID";
             SQLQuery query = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID);
             List<Object[]> list = (List<Object[]>)query.list();
-            // System.out.println("list: " + list);
             for (Object[] aList : list)
             {
                 System.out.println((String) aList[0] + "@" + (java.sql.Timestamp)aList[1] + ":\t" +(String)aList[2]);

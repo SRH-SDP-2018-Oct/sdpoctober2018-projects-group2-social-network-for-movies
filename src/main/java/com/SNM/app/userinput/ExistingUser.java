@@ -74,7 +74,6 @@ private void enterPassword(){
             if (results.isEmpty())
             {
                 System.out.println("Email ID not found!!Please try again:");
-//                System.exit(-2);
                 this.enterEmail();
             }
             for (Object aList : results)

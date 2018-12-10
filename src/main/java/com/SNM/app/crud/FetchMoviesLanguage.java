@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class FetchMoviesLanguage {
 
     private Session sessionObj;
-    private SessionFactory sessionFactoryObj;
     HibernateUtil hibernateUtil = new HibernateUtil();
     private String language;
 
@@ -26,14 +25,13 @@ public class FetchMoviesLanguage {
             sessionObj.beginTransaction();
             String sql ="select distinct m.movie_name from moviedetail m join languagelist l on l.language= :lang and l.movie_ID= m.movie_ID";
             List list = sessionObj.createSQLQuery(sql).setParameter("lang", language).list();
-            System.out.println("list: " + list);
             for (Object aList : list) {
                 System.out.println(aList);
             }
             System.out.println("Enter the movie of your choice;");
             Scanner input = new Scanner(System.in);
             String search = input.nextLine();
-            FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(search);
+            new FetchMovieSearch(search);
             sessionObj.getTransaction().commit();
         } catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {

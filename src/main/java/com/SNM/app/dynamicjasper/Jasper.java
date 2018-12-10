@@ -7,7 +7,6 @@ import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.*;
@@ -35,7 +34,6 @@ public class Jasper
                     dbConnection = null;
                     preparedStatement = null;
                     String query = "SELECT p.email_ID,g.genre,m.movie_name,m.releasedate from genrelist g join preferences p on p.genre=g.genre join moviedetail m on g.movie_ID=m.movie_ID where email_ID= ? and MONTH(releasedate)=? and YEAR(releasedate)=?";
-                    //String query1 = "SELECT count(movie_name) FROM test.moviedetail where MONTH(releasedate)=? and YEAR(releasedate)=?";
                     Class.forName(DB_DRIVER);
                     dbConnection = DriverManager.getConnection(myUrl, DB_USER, DB_PASSWORD);
                     preparedStatement = dbConnection.prepareStatement(query);
@@ -43,23 +41,6 @@ public class Jasper
                     preparedStatement.setString(2,month);
                     preparedStatement.setString(3,year);
                     ResultSet r = preparedStatement.executeQuery();
-
-//                    while (r.next()) {
-//
-//                        String emailid = r.getString("email_ID");
-//                        String genre1 = r.getString("genre");
-//                        String movieid1 = r.getString("movie_name");
-//                        String releasedate = r.getString("releasedate");
-//
-//
-//                        System.out.println("email_ID : " + emailid);
-//                        System.out.println("genre : " + genre1);
-//                        System.out.println("movie_ID :" + movieid1);
-//                        System.out.println("releasedate :" + releasedate);
-//
-//
-//                    }
-
                     FastReportBuilder drb = new FastReportBuilder();
                     DynamicReport dr = drb.addColumn("Email ID", "email_ID", String.class.getName(), 30)
                                           .addColumn("Genre", "genre", String.class.getName(), 30)

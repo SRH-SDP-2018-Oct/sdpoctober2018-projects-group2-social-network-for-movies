@@ -4,7 +4,6 @@ import com.SNM.app.pojo.MovieDetails;
 import com.SNM.app.userinput.GlobalSearch;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.io.BufferedReader;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.Scanner;
 public class FetchMovieSearch {
     static Session sessionob;
-    static SessionFactory sessionFactoryOb;
     HibernateUtil hibernateUtil=new HibernateUtil();
     Scanner scanner = new Scanner(System.in);
     private int movieID;
@@ -26,15 +24,10 @@ public class FetchMovieSearch {
     {
         fetchMovieDetails(movie_name);
     }
-
-
-    public FetchMovieSearch() {
-    }
-
     public void fetchMovieDetails(String movie) {
         MovieDetails movies;
         try {
-            String smallLetters = movie.toLowerCase();
+            movie.toLowerCase();
             sessionob = hibernateUtil.buildSessionFactory().openSession();
             sessionob.beginTransaction();
             String hql = "FROM MovieDetails movies WHERE movies.movie_name= :UserInputMovie";
@@ -58,7 +51,7 @@ public class FetchMovieSearch {
                 System.out.println("ReleaseDetails\t\t:" + movies.getRelease_details());
                 System.out.println("CensorBoardRating\t:" + movies.getCensorboard_ratings());
                 System.out.println("UserRating\t\t    :" + movies.getRating()/movies.getRatecount());
-                System.out.println("No. of people rated:"+movies.getRatecount());
+                System.out.println("No. of people rated :"+movies.getRatecount());
                 System.out.println("Genres\t\t\t    :"+movies.getGenres());
                 System.out.println("Languages\t\t\t:"+movies.getLanguages());
                 String rdate=movies.getReleasedate().toString();
@@ -132,7 +125,6 @@ public class FetchMovieSearch {
             query1.setParameter("movie_ID", movie);
             int r = query1.executeUpdate();
             if (r>0){
-                //System.out.println("rows affected\t" + r);
                 System.out.println("Thanks for your rating!!");
             }
             sessionob.getTransaction().commit();

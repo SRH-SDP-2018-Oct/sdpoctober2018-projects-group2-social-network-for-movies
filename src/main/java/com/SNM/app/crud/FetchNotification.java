@@ -87,8 +87,6 @@ public class FetchNotification {
     public void getNextweek()
     {
         System.out.println("Next week");
-        //System.out.println(nextweek);
-        //System.out.println();
         try
         {
             sessionob = hibernateUtil.buildSessionFactory().openSession();

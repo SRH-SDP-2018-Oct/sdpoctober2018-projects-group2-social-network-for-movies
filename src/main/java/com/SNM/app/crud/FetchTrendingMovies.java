@@ -3,19 +3,16 @@ package com.SNM.app.crud;
 import com.SNM.app.pojo.TrendingMovies;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 public class FetchTrendingMovies {
 
     private Session sessionObj;
-    private SessionFactory sessionFactoryObj;
     private HibernateUtil hibernateUtil = new HibernateUtil();
 
     public void fetchTrendingMovies() {
         try {
-            TrendingMovies t;
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
             String sql = "select  movie_name from moviedetail order by rating/ratecount desc,ratecount desc limit 10";

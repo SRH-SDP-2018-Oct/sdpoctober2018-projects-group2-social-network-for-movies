@@ -1,13 +1,11 @@
 package com.SNM.app.crud;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import java.util.List;
 
 public class UserProfile {
     private Session sessionObj;
-    private SessionFactory sessionFactoryObj;
     HibernateUtil hibernateUtil = new HibernateUtil();
     public void fetchDetails(String email)
     {
