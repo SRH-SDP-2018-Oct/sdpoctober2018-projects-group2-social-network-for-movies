@@ -24,6 +24,7 @@ public class NewUserTest {
         //set up the scanner
         when(mockScanner.nextLine()).thenReturn("nithin@gmail.com");
 
+
     }
 
     @Test

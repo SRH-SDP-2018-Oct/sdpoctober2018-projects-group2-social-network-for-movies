@@ -11,8 +11,8 @@ public class HomePageTest {
     String genre2="Romance";
     String language1="Kannada";
     String language2="English";
-//    String mess1="Genre 1 are action movies";
-//    String mess2="Genre 2 are romance movies";
+    String mess1="Genre 1 are action movies";
+    String mess2="Genre 2 are romance movies";
 
 
 
@@ -24,8 +24,8 @@ public class HomePageTest {
     @Test
     public void switchCases() throws Exception
     {
-//        assertEquals("You chose Action","Action",genre1);
-//        assertEquals("You chose Romance","Romance",genre2);
+        assertEquals("You chose Action","Action",genre1);
+        assertEquals("You chose Romance","Romance",genre2);
 
         assertFalse("Genre 1 are action movies", genre1!="Action");
         System.out.println("You selected the genre Action");
@@ -35,6 +35,8 @@ public class HomePageTest {
         System.out.println("You selected the Language Kannada");
         assertFalse("You selected English", language2!="English");
         System.out.println("You selected the Language English");
+
+
     }
 
 

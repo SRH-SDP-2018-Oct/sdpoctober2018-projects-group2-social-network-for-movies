@@ -1,5 +1,7 @@
 package com.SNM.app.main;
 
+import com.SNM.app.crud.UserProfile;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,7 +9,6 @@ import static org.junit.Assert.*;
 public class ImplementSNMTest {
 
     int other;
-
 
     @Test
     public void existingUser() {

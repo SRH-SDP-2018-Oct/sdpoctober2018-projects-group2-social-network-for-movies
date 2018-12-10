@@ -20,19 +20,19 @@ public class NewUser
     {
         PasswordHash hash= new PasswordHash();
         UserProfile user = new UserProfile();
-        System.out.println("Welcome !! Register and experience the best");
-        System.out.println("Enter your First Name");
+        System.out.println("Welcome ! Register and experience the best");
+        System.out.println("Enter your First Name : ");
         this.first_name = userinput.nextLine();
-        System.out.println("Enter your Last Name");
+        System.out.println("Enter your Last Name : ");
         this.last_name = userinput.nextLine();
         this.enterEmailID();
         this.userPrefrence();
         this.password = enterPassword();
         this.hashPassword= hash.HashPassword(password);
-        System.out.println("Enter your age");
+        System.out.println("Enter your age : ");
         this.age = userinput.nextInt();
         user.setUserDetails(email_ID,first_name,last_name,hashPassword,age);
-        System.out.println("User registration sucessfully done!!Please login again to use the application.");
+        System.out.println("User registration successful ! Please login with your email-id and password\n");
         ExistingUser redirected=new ExistingUser();
         System.exit(0);
 
@@ -40,7 +40,7 @@ public class NewUser
 
     public void userPrefrence(){
 
-        System.out.println("Enter your preferred Genre(action/romance) and 0 to exit");
+        System.out.println("Enter preferred Genre:\nAction\nAdventure\nBiography\nComedy\nCrime\nDrama\nFamily\nFantasy\nHistory\nRomance\nSport\nWar\nor 0 to finish choices");
         String preferdGenre = userinput.next();
         if(!(preferdGenre.equals("0"))){
             setPreferences.setPreference(preferdGenre,this.email_ID);
@@ -58,7 +58,7 @@ public class NewUser
         Matcher matcher = pattern.matcher(email_ID);
         boolean result = matcher.find();
         while (!result) {
-            System.out.println("Please enter a vaild email ID:\n");
+            System.out.println("Please enter a valid email ID:\n");
             enterEmailID();
         }
 
@@ -67,7 +67,7 @@ public class NewUser
     public String enterPassword()
     {
         System.out.println("Enter Password");
-        System.out.print("NOTE:The password should be minimum of 8 characters,contain at least 1 special character and 1 uppercase letter\n");
+        System.out.print("NOTE:The password must be 8 characters long,contain 1 Upper case, 1 number and 1 special character\n");
         String password = userinput.next();
         System.out.println("Confirm password: ");
         String confirm_password = userinput.next();

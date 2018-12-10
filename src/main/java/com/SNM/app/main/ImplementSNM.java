@@ -8,13 +8,15 @@ import java.util.Scanner;
 public class ImplementSNM {
     public static void main(String[] args)
     {
-        System.out.println(".......Social Network for Movies.......\n");
+        System.out.println("........................................\n");
+        System.out.println("       Social Network for Movies        \n");
+        System.out.println("........................................\n");
         appStart();
     }
     public static void appStart()
     {
         Scanner userinput = new Scanner(System.in);
-        System.out.println("Select an option:\n 1. for Existing User.\n 2. for New User");
+        System.out.println("Select an option:\n1. For Existing User\n2. For New User");
         String choice = userinput.next();
         if(choice.equals("2"))
         {
