@@ -4,15 +4,17 @@ import com.SNM.app.pojo.TrendingMovies;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.List;
 
-public class FetchTrendingMovies {
+public class FetchTrendingMoviesTest {
 
     private Session sessionObj;
     private SessionFactory sessionFactoryObj;
     private HibernateUtil hibernateUtil = new HibernateUtil();
-
+    @Test
     public void fetchTrendingMovies() {
         try {
             TrendingMovies t;
@@ -20,14 +22,8 @@ public class FetchTrendingMovies {
             sessionObj.beginTransaction();
             String sql = "select  movie_name from moviedetail order by rating/ratecount desc,ratecount desc limit 10";
             List list = sessionObj.createSQLQuery(sql).list();
-            System.out.println("list: " + list);
-            int i=1;
-            for (Object aList : list) {
-                String str = (String) aList;
-                System.out.println("Rank:"+i+"\t\t"+"Movie Name:"+str);
-                i++;
-            }
             sessionObj.getTransaction().commit();
+            Assert.assertTrue(!(list.isEmpty()));
         } catch (Exception sqlException) {
             if (null != sessionObj.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");

@@ -3,7 +3,6 @@ package com.SNM.app.crud;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -103,7 +102,6 @@ public class FetchNotification {
             }
             sessionob.getTransaction().commit();
         }
-
         catch(Exception sqlException) {
             if(null != sessionob.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
@@ -116,7 +114,6 @@ public class FetchNotification {
             }
         }
     }
-
     public void getNextMonth()
     {
         System.out.println("Next Month");
@@ -134,12 +131,10 @@ public class FetchNotification {
             }
             sessionob.getTransaction().commit();
         }
-
         catch(Exception sqlException) {
             if(null != sessionob.getTransaction()) {
                 System.out.println("\n.......Transaction Is Being Rolled Back.......");
                 sessionob.getTransaction().rollback();}
-
             sqlException.printStackTrace();
         } finally {
             if(sessionob != null) {
