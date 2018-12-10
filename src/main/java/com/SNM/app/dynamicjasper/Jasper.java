@@ -7,6 +7,7 @@ import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.*;
@@ -67,25 +68,7 @@ public class Jasper
                             .setPrintBackgroundOnOddRows(true).setUseFullPageWidth(true).build();
                     JRResultSetDataSource jasRs = new JRResultSetDataSource(r); // Convert Resultset to Jasper Resultset
                     JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, new ClassicLayoutManager(), jasRs);
-                    JasperViewer.viewReport(jp); // finally display the report report
-//                    while (r.next()) {
-//
-//                        String emailid = r.getString("email_ID");
-//                        String genre1 = r.getString("genre");
-//                        String movieid1 = r.getString("movie_name");
-//                        String releasedate = r.getString("releasedate");
-//
-//
-//                        System.out.println("email_ID : " + emailid);
-//                        System.out.println("genre : " + genre1);
-//                        System.out.println("movie_ID :" + movieid1);
-//                        System.out.println("releasedate :" + releasedate);
-//
-//                        System.out.format("%s, %s, %s, %s\n", emailid, genre1, movieid1, releasedate);
-//
-//
-//                    }
-//                    r.close();
+                    JasperViewer.viewReport(jp);
 
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
@@ -94,46 +77,6 @@ public class Jasper
                 } catch (JRException e1) {
                     e1.printStackTrace();
                 }
-//                try{
-//                String query2 = "SELECT count(movie_name) FROM test.moviedetail where MONTH(releasedate)=? and YEAR(releasedate)=?";
-//                Class.forName(DB_DRIVER);
-//                dbConnection = DriverManager.getConnection(myUrl, DB_USER, DB_PASSWORD);
-//                preparedStatement = dbConnection.prepareStatement(query2);
-//                preparedStatement.setString(1, date);
-//                ResultSet rs = preparedStatement.executeQuery();
-//                FastReportBuilder drb = new FastReportBuilder();
-//                DynamicReport dr = drb.addColumn("No of times movie released", "count(movie_name)", String.class.getName(), 30)
-//
-////                        .addColumn("Genre", "genre", String.class.getName(), 30)
-////                        .addColumn("Movie Name", "movie_name", String.class.getName(), 50)
-//                        .setPrintBackgroundOnOddRows(true).setUseFullPageWidth(true).build();
-//                JRResultSetDataSource resultsetdatasource = new JRResultSetDataSource(rs); // Convert Resultset to Jasper Resultset
-//                JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, new ClassicLayoutManager(), resultsetdatasource);
-//                JasperViewer.viewReport(jp); // finally display the report report
-//                while (rs.next()) {
-//
-//                    String count = rs.getString("count(movie_name)");
-////                    String genre1 = rs.getString("genre");
-////                    String movieid1 = rs.getString("movie_name");
-////
-////
-////                    System.out.println("email_ID : " + emailid);
-////                    System.out.println("genre : " + genre1);
-//                    System.out.println("count(movie_name) :" + count);
-//                    //System.out.format("%s, %s, %s\n", emailid, genre1, movieid1);
-//
-//
-//                }
-//                rs.close();
-//
-//            } catch (ClassNotFoundException e1) {
-//    e1.printStackTrace();
-//} catch (SQLException e1) {
-//    e1.printStackTrace();
-//} catch (JRException e1) {
-//    e1.printStackTrace();
-//}
-
 
             }
     }

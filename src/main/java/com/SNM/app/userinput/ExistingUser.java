@@ -31,7 +31,7 @@ public class ExistingUser
 
     public void enterEmail(){
         Scanner useremailID = new Scanner(System.in);
-        System.out.println("Enter your EmailID to LogIn");
+        System.out.println("Enter your email-ID to login :");
         this.emailID = useremailID.next();
         this.getDetails();
         this.enterPassword();
@@ -41,21 +41,21 @@ public class ExistingUser
     int countDown =2;
 public void enterPassword(){
     Scanner useremailID = new Scanner(System.in);
-    System.out.println("Enter the password");
+    System.out.println("Enter your password :");
     this.password = useremailID.next();
     System.out.println(password );
     hashPassword = passwordhash.HashPassword(password);
     System.out.println(hashPassword);
     if (!(hashPasswordDb.equals(hashPassword)) ) {
         if(countDown == 0){
-            System.out.println("Authentication failed,Please contact Admin");
+            System.out.println("Authentication failed, Please contact your admin!");
             System.exit(-2);
         }
-        System.out.println("Authentication failed. Please try again you have "+ this.countDown +" more chance;");
+        System.out.println("Authentication failed. Please try again you have "+ this.countDown +" more chances:");
         countDown--;
         enterPassword();
     } else {
-        System.out.println("Successfully LoggedIn");
+        System.out.println("Login Successful!");
         try {
             HomePage homePage = new HomePage();
         } catch (IOException e) {
