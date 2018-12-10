@@ -11,7 +11,6 @@ public class ImplementSNM {
         System.out.println(".......Social Network for Movies.......\n");
         appStart();
     }
-
     public static void appStart()
     {
         Scanner userinput = new Scanner(System.in);
@@ -25,7 +24,6 @@ public class ImplementSNM {
         {
             ExistingUser existinguser = new ExistingUser();
         }
-
         else{
             appStart();
         }
