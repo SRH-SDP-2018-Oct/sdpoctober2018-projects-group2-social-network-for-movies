@@ -1,6 +1,5 @@
 package com.SNM.app.crud;
 
-import com.SNM.app.userinput.HomePage;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,7 +19,7 @@ public class FetchMoviesGenre {
         fetchMoviesGenre();
     }
 
-
+    String search;
     public void fetchMoviesGenre(){
         try {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
@@ -34,7 +33,7 @@ public class FetchMoviesGenre {
             sessionObj.getTransaction().commit();
             System.out.println("Enter the movie of your choice;");
             Scanner input = new Scanner(System.in);
-            String search = input.nextLine();
+            search = input.nextLine();
             FetchMovieSearch fetchMovieSearch = new FetchMovieSearch(search);
         } catch(Exception sqlException) {
             if(null != sessionObj.getTransaction()) {

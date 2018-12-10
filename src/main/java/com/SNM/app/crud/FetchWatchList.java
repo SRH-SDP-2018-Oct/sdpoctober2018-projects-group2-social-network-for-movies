@@ -19,7 +19,7 @@ public class FetchWatchList {
     private static FetchWatchList fetchWatchList;
     private static String email_ID, movie_ID;
 
-    private FetchWatchList()
+    public FetchWatchList()
     { }
     public static FetchWatchList getFetchWatchListInstance() {
         if (fetchWatchList == null)

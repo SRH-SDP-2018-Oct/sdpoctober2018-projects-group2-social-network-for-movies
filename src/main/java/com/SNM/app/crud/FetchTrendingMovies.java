@@ -18,12 +18,14 @@ public class FetchTrendingMovies {
             TrendingMovies t;
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
-            String sql = "FROM TrendingMovies";
-            List list = sessionObj.createQuery(sql).list();
+            String sql = "select  movie_name from moviedetail order by rating/ratecount desc,ratecount desc limit 10";
+            List list = sessionObj.createSQLQuery(sql).list();
             System.out.println("list: " + list);
+            int i=1;
             for (Object aList : list) {
-                t = (TrendingMovies)aList;
-                System.out.println("Rank:"+t.getSl_no()+"\t\t"+"Movie Name:"+t.getmovie_name());
+                String str = (String) aList;
+                System.out.println("Rank:"+i+"\t\t"+"Movie Name:"+str);
+                i++;
             }
             sessionObj.getTransaction().commit();
         } catch (Exception sqlException) {
