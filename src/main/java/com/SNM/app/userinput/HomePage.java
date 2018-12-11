@@ -20,7 +20,7 @@ public class HomePage {
             System.out.println("------------------");
             System.out.println("    DASHBOARD     ");
             System.out.println("------------------");
-            System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: My Watchlist\n7: Reports\n8: GlobalSearch\n9: Exit\n");
+            System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: My Watchlist\n7: Reports\n8: GlobalSearch\n9: Movies for your mood\n10: Exit\n");
             System.out.println("Enter your choice");
             Scanner userchoice = new Scanner(System.in);
             String userChoice = userchoice.next();
@@ -114,22 +114,50 @@ public class HomePage {
                     viewwatchlist.fetchWatchList();
                     break;
                 case ("7"):
+                    //System.out.println("View Reports");
+                    System.out.println("1.Movie details based on your genre\n 2.Review comments based on movie");
+                    int choice = userchoice.nextInt();
+                    if (choice == 1) {
+                        new Jasper();
+                    } else if (choice == 2) {
+                        new ReviewComment();
+                    }
 
-                        System.out.println("View Reports");
-                        System.out.println("1.Movie details based on your genre\n 2.Review comments based on movie");
-                        int choice = userchoice.nextInt();
-                        if (choice == 1) {
-                            new Jasper();
-                        } else if (choice == 2) {
-                            new ReviewComment();
-                        }
-
-                        break;
+                    break;
 
                 case ("8"):
                     new GlobalSearch();
                     break;
                 case("9"):
+                    System.out.println("-----------------------");
+                    System.out.println("Please select you mood:\n-----------------------\n1. Happy\n2. Sad\n3. Bored\n");
+                    String moodCh = userchoice.next();
+                    String moodSearch;
+                    switch (moodCh){
+                        case("1"):
+                            System.out.println("We can make you feel a lot more happier!!\nDestroyer\nSchindler's list\nDownfall\nKGF\nZero");
+                            System.out.println("Enter your choice : ");
+                            moodSearch=readComp();
+                            new FetchMovieSearch(moodSearch.toLowerCase());
+                            break;
+
+                        case("2"):
+                            System.out.println("We're sorry that you are sad, but we also have something to cheer you up!!\nKirik party\nBangalore days\nOrange");
+                            System.out.println("Enter your choice : ");
+                            moodSearch=readComp();
+                            new FetchMovieSearch(moodSearch.toLowerCase());
+                            break;
+
+                        case("3"):
+                            System.out.println("We have the right picks for your boredom!\nThe dark knight raises\nBaahubali: the beginning\nAquaman\nMowgli");
+                            System.out.println("Enter your choice : ");
+                            moodSearch=readComp();
+                            new FetchMovieSearch(moodSearch.toLowerCase());
+                            break;
+
+                    }
+                    break;
+                case("10"):
                     i=false;
                     System.out.println("Auf wiedersehen!");
                     break;
@@ -154,5 +182,4 @@ public class HomePage {
         }
     }
 }
-
 

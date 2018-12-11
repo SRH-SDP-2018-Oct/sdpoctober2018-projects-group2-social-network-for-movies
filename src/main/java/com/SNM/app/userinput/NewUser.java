@@ -67,7 +67,7 @@ public class NewUser
     public String enterPassword()
     {
         System.out.println("Enter Password");
-        System.out.print("NOTE:The password must be 8 characters long,contain 1 Upper case, 1 number and 1 special character\n");
+        System.out.print("NOTE:The password must be 8 characters long, contain 1 Upper case, 1 number and 1 special character\n");
         String password = userinput.next();
         System.out.println("Confirm password: ");
         String confirm_password = userinput.next();
