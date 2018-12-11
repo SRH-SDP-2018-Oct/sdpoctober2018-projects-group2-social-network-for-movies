@@ -26,7 +26,7 @@ public class ReviewComment {
         Connection dbConnection = null;
         try {
             Scanner scan = new Scanner(System.in);
-            System.out.println("Enter the movie name for its review comment list:\n");
+            System.out.println("Enter the movie name for its review comment list:");
             String moviename = scan.nextLine();
             dbConnection = null;
             preparedStatement = null;
@@ -36,14 +36,19 @@ public class ReviewComment {
             preparedStatement = dbConnection.prepareStatement(query);
             preparedStatement.setString(1, moviename);
             ResultSet r = preparedStatement.executeQuery();
-            FastReportBuilder drb = new FastReportBuilder();
-            DynamicReport dr = drb.addColumn("Email ID", "email_ID", String.class.getName(), 30)
-                                  .addColumn("Time&Date", "timestamp", String.class.getName(), 50)
-                                  .addColumn("User Review", "review", String.class.getName(), 50)
-                    .setPrintBackgroundOnOddRows(true).setUseFullPageWidth(true).build();
-            JRResultSetDataSource jasRs = new JRResultSetDataSource(r); // Convert Resultset to Jasper Resultset
-            JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, new ClassicLayoutManager(), jasRs);
-            JasperViewer.viewReport(jp); // finally display the report
+            if (!r.next() ) {
+                System.out.println("No data found for your selection");
+            }
+            else {
+                FastReportBuilder drb = new FastReportBuilder();
+                DynamicReport dr = drb.addColumn("User", "email_ID", String.class.getName(), 30)
+                        .addColumn("Time&Date", "timestamp", String.class.getName(), 50)
+                        .addColumn("User Review", "review", String.class.getName(), 50).setTitle("Reviews for selected movie")
+                        .setPrintBackgroundOnOddRows(true).setUseFullPageWidth(true).build();
+                JRResultSetDataSource jasRs = new JRResultSetDataSource(r); // Convert Resultset to Jasper Resultset
+                JasperPrint jp = DynamicJasperHelper.generateJasperPrint(dr, new ClassicLayoutManager(), jasRs);
+                JasperViewer.viewReport(jp);
+            }
         } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         } catch (SQLException e1) {

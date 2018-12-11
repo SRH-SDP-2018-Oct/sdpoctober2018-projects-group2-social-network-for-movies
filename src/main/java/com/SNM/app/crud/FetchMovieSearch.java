@@ -50,7 +50,7 @@ public class FetchMovieSearch {
             else{
                 for (Object aList : results) {
                     movies = (MovieDetails) aList;
-                    System.out.println("MovieID\t\t\t    :" + movies.getMovie_ID());
+                    //System.out.println("MovieID\t\t\t    :" + movies.getMovie_ID());
                     this.movie=movies.getMovie_ID();
                     this.movieID = movies.getMovie_ID();
                     System.out.println("MovieName\t\t\t:" + movie);
@@ -60,7 +60,7 @@ public class FetchMovieSearch {
                     System.out.println("ReleaseDetails\t\t:" + movies.getRelease_details());
                     System.out.println("CensorBoardRating\t:" + movies.getCensorboard_ratings());
                     System.out.println("UserRating\t\t    :" + movies.getRating()/movies.getRatecount());
-                    System.out.println("No. of people rated:"+movies.getRatecount());
+                    System.out.println("No. of people rated :"+movies.getRatecount());
                     System.out.println("Genres\t\t\t    :"+movies.getGenres());
                     System.out.println("Languages\t\t\t:"+movies.getLanguages());
                     String rdate=movies.getReleasedate().toString();

@@ -20,7 +20,7 @@ public class HomePage {
             System.out.println("------------------");
             System.out.println("    DASHBOARD     ");
             System.out.println("------------------");
-            System.out.println("1: Genre\n2: Language\n3: Trending Now\n4: Notifications\n5: Movie Search\n6: My Watchlist\n7: Reports\n8: GlobalSearch\n9: Movies for your mood\n10: Exit\n");
+            System.out.println("1:  Genre\n2:  Language\n3:  Trending Now\n4:  Notifications\n5:  Movie Search\n6:  My Watchlist\n7:  Reports\n8:  GlobalSearch\n9:  Movies for your mood\n10: Exit\n");
             System.out.println("Enter your choice");
             Scanner userchoice = new Scanner(System.in);
             String userChoice = userchoice.next();
@@ -109,13 +109,14 @@ public class HomePage {
                     new FetchMovieSearch(moviedetailsbasedonname);
                     break;
                 case ("6"):
-                    System.out.println("View Watchlist");
+                    System.out.println("--------------");
+                    System.out.println("  Watchlist");
+                    System.out.println("--------------");
                     FetchWatchList viewwatchlist = FetchWatchList.getFetchWatchListInstance();
                     viewwatchlist.fetchWatchList();
                     break;
                 case ("7"):
-                    //System.out.println("View Reports");
-                    System.out.println("1.Movie details based on your genre\n 2.Review comments based on movie");
+                    System.out.println("1. Movie details based on your genre\n2. Review comments based on movie");
                     int choice = userchoice.nextInt();
                     if (choice == 1) {
                         new Jasper();

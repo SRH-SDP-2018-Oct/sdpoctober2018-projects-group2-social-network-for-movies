@@ -4,7 +4,7 @@ import com.SNM.app.pojo.CompositeKeyWatchList;
 import com.SNM.app.pojo.Watchlist;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,7 +38,9 @@ public class FetchWatchList {
 
             String sql = "select distinct m.movie_name from moviedetail m join watchlist w on w.email_ID= :email and w.movie_ID= m.movie_ID";
             List list = sessionObj.createSQLQuery(sql).setParameter("email", email_ID).list();
-            System.out.println("list: " + list);
+            if(list.isEmpty()){
+                System.out.println("You do not have any movies added to you Watchlist!!");
+            }
             for (Object aList : list) {
                 System.out.println(aList);
             }

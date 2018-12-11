@@ -2,9 +2,14 @@ package com.SNM.app.crud;
 
 import com.SNM.app.pojo.CompositeKeyUserReview;
 import com.SNM.app.pojo.UserReview;
+import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import com.SNM.app.utils.HibernateUtil;
+//<<<<<<< Updated upstream
+//import com.SNM.app.utils.HibernateUtil;
+//=======
+//
+//>>>>>>> Stashed changes
 import java.util.Date;
 import java.util.List;
 
@@ -62,32 +67,31 @@ public class InsertUserReviews {
             }
         }
     }
-    public void setUserReviews(int movieID, String review, Date timestamp)
-    {
+    public void setUserReviews(int movieID, String review, Date timestamp) {
         UserReview addreview = new UserReview();
 
-        try {
-            sessionObj = hibernateUtil.buildSessionFactory().openSession();
-            sessionObj.beginTransaction();
-            addreview.setCompositeKeyUserReview(new CompositeKeyUserReview(email_ID, movieID,timestamp));
-            addreview.setReview(review);
-            sessionObj.save(addreview);
-            sessionObj.flush();
-            sessionObj.getTransaction().commit();
-            System.out.println("Thanks for your review!!");
-        } catch (Exception sqlException) {
-            if (null != sessionObj.getTransaction()) {
-                System.out.println("\n.......Transaction Is Being Rolled Back.......");
-                sessionObj.getTransaction().rollback();
-            }
+            try {
+                sessionObj = hibernateUtil.buildSessionFactory().openSession();
+                sessionObj.beginTransaction();
+                addreview.setCompositeKeyUserReview(new CompositeKeyUserReview(email_ID, movieID, timestamp));
+                addreview.setReview(review);
+                sessionObj.save(addreview);
+                sessionObj.flush();
+                sessionObj.getTransaction().commit();
+                System.out.println("Thanks for your review!!");
+            } catch (Exception sqlException) {
+                if (null != sessionObj.getTransaction()) {
+                    System.out.println("\n.......Transaction Is Being Rolled Back.......");
+                    sessionObj.getTransaction().rollback();
+                }
 
-            sqlException.printStackTrace();
-        } finally {
-            if (sessionObj != null)
-            {
-                sessionObj.close();
+                sqlException.printStackTrace();
+            } finally {
+                if (sessionObj != null) {
+                    sessionObj.close();
+                }
             }
         }
-    }
+
 
 }
