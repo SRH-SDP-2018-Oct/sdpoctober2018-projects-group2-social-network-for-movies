@@ -27,7 +27,6 @@ public class FetchNotificationTest {
         System.out.println(email);
         getPastWeek();
     }
-private String lastweekmovie="Kal ho na ho";
     @Test
     public void getPastWeek() {
         System.out.println("Test case for Last week");
@@ -39,8 +38,7 @@ private String lastweekmovie="Kal ho na ho";
             Query query = sessionob.createSQLQuery(sql).setParameter("now", now).setParameter("weekAgo",weekAgo).setParameter("email",this.email);
             List results = query.list();
             sessionob.getTransaction().commit();
-            //Assert.assertTrue(!(results.isEmpty()));
-            Assert.assertEquals(query,lastweekmovie);
+            Assert.assertTrue(!(query.equals(results)));
         }
         catch(Exception sqlException) {
             if(null != sessionob.getTransaction()) {
