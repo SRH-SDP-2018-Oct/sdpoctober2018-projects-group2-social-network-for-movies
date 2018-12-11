@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-//import com.SNM.app.crud.InsertUserReviews;
-
 public class ExistingUser
 {
     public static String emailID;
@@ -41,9 +39,7 @@ private void enterPassword(){
     Scanner useremailID = new Scanner(System.in);
     System.out.println("Enter your password :");
     String password = useremailID.next();
-    System.out.println(password);
     String hashPassword = passwordhash.HashPassword(password);
-    System.out.println(hashPassword);
     if (!(hashPasswordDb.equals(hashPassword)) ) {
         if(countDown == 0){
             System.out.println("Authentication failed, Please contact your admin!");
@@ -80,7 +76,6 @@ private void enterPassword(){
             {
                 userprofile = (UserProfile) aList;
                 this.hashPasswordDb = userprofile.getPassword();
-                System.out.println(hashPasswordDb);
                 FetchWatchList.getFetchWatchListInstance();
                 FetchWatchList.setemail_ID(userprofile.getEmail_ID());
                 InsertUserReviews.email_ID=userprofile.getEmail_ID();

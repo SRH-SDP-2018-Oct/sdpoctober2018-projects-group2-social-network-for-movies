@@ -30,9 +30,6 @@ public class FetchMovieSearch {
     }
 
 
-    public FetchMovieSearch() {
-    }
-
     public void fetchMovieDetails(String movie) {
         MovieDetails movies;
         try {
@@ -170,7 +167,7 @@ public class FetchMovieSearch {
             sessionObj.close();
             return true;
         } catch (Exception sqlException) {
-            //System.out.println("Error" + sqlException);
+            sessionObj.close();
             System.out.println("You cannot rate a movie more than once.");
 
         }

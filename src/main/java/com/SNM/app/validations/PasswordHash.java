@@ -19,7 +19,7 @@ public class PasswordHash {
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
             generatedPassword = sb.toString();
-            System.out.println("Hash Pw:   "+generatedPassword);
+            //System.out.println("Hash Pw:   "+generatedPassword);
         }
         catch (NoSuchAlgorithmException exception) {
             exception.printStackTrace();

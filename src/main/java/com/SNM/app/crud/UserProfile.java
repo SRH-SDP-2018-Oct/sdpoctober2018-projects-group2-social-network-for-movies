@@ -7,6 +7,8 @@ import java.util.List;
 public class UserProfile {
     private Session sessionObj;
     HibernateUtil hibernateUtil = new HibernateUtil();
+
+
     public void fetchDetails(String email)
     {
         com.SNM.app.pojo.UserProfile emp;
@@ -38,6 +40,8 @@ public class UserProfile {
             }
         }
     }
+
+
     public void setUserDetails(String email, String fname, String lname, String password, int age) {
         com.SNM.app.pojo.UserProfile userProfile = new com.SNM.app.pojo.UserProfile();
         try {

@@ -20,7 +20,7 @@ public class NewUser
     {
         PasswordHash hash= new PasswordHash();
         UserProfile user = new UserProfile();
-        System.out.println("Welcome ! Register and experience the best");
+        System.out.println("Welcome!! Register and experience the best");
         System.out.println("Enter your First Name : ");
         this.first_name = userinput.nextLine();
         System.out.println("Enter your Last Name : ");
@@ -50,6 +50,7 @@ public class NewUser
     }
 
     public void enterEmailID() {
+        this.email_ID= null;
         Scanner userinput = new Scanner(System.in);
         System.out.println("Enter your EmailID");
         this.email_ID = userinput.nextLine();
@@ -58,8 +59,9 @@ public class NewUser
         Matcher matcher = pattern.matcher(email_ID);
         boolean result = matcher.find();
         while (!result) {
-            System.out.println("Please enter a valid email ID:\n");
-            enterEmailID();
+            System.out.println("Invalid email id please enter the data again." +
+                    "\n");
+            new NewUser();
         }
 
     }

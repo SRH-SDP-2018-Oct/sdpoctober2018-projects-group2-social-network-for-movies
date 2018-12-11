@@ -20,7 +20,7 @@ public class HomePage {
             System.out.println("------------------");
             System.out.println("    DASHBOARD     ");
             System.out.println("------------------");
-            System.out.println("1:  Genre\n2:  Language\n3:  Trending Now\n4:  Notifications\n5:  Movie Search\n6:  My Watchlist\n7:  Reports\n8:  GlobalSearch\n9:  Movies for your mood\n10: Exit\n");
+            System.out.println("1:  Genre\n2:  Language\n3:  Top movies based on SNM user rating\n4:  Notifications\n5:  SNM Movie Search\n6:  My Watchlist\n7:  Reports\n8:  GlobalSearch\n9:  Movies for your mood\n10: Exit\n");
             System.out.println("Enter your choice");
             Scanner userchoice = new Scanner(System.in);
             String userChoice = userchoice.next();
@@ -68,7 +68,7 @@ public class HomePage {
                     language.add("sp");
                     language.add("fr");
                     language.add("it");
-                    String languageofchoice = userchoice.next();
+                    String languageofchoice = userchoice.next().toLowerCase();
                     if(language.contains(languageofchoice)){
                         new FetchMoviesLanguage(languageofchoice);
                     }
@@ -84,7 +84,7 @@ public class HomePage {
                 case ("4"):
                     System.out.println("Notification about Release based on your preferences:");
                     FetchNotification fetchNotification = new FetchNotification(email);
-                    System.out.println("1.Last week release information\n2.Last month release information\n3.Next week release information\n4.Next month release information\n");
+                    System.out.println("1.Last week release information\n2.Last month release information\n3.Next week release information\n4.Next month release information\n5.Go back to main menu");
                     String notificationChoice = userchoice.next();
                     switch (notificationChoice) {
                         case ("1"):
@@ -116,6 +116,9 @@ public class HomePage {
                     viewwatchlist.fetchWatchList();
                     break;
                 case ("7"):
+                    System.out.println("-----------------");
+                    System.out.println("     Reports");
+                    System.out.println("-----------------");
                     System.out.println("1. Movie details based on your genre\n2. Review comments based on movie");
                     int choice = userchoice.nextInt();
                     if (choice == 1) {

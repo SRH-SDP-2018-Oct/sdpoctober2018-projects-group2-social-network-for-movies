@@ -1,6 +1,5 @@
 package com.SNM.app.crud;
 
-import com.SNM.app.pojo.TrendingMovies;
 import com.SNM.app.utils.HibernateUtil;
 import org.hibernate.Session;
 
@@ -17,7 +16,6 @@ public class FetchTrendingMovies {
             sessionObj.beginTransaction();
             String sql = "select  movie_name from moviedetail order by rating/ratecount desc,ratecount desc limit 10";
             List list = sessionObj.createSQLQuery(sql).list();
-            System.out.println("list: " + list);
             int i=1;
             for (Object aList : list) {
                 String str = (String) aList;

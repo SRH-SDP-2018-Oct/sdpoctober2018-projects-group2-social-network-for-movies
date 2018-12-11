@@ -34,7 +34,9 @@ public class FetchNotification {
             String sql = "SELECT distinct movie_name FROM SNM_Final.genrelist g ,SNM_Final.preferences p,SNM_Final.moviedetail m where p.genre = g.genre and g.movie_ID= m.movie_ID and m.releasedate between :weekAgo and :now and p.email_ID = :email";
             Query query = sessionob.createSQLQuery(sql).setParameter("now", now).setParameter("weekAgo",weekAgo).setParameter("email",this.email);
             List results = query.list();
-            System.out.println(results);
+            if(results.isEmpty()){
+                System.out.println("Sorry we do not have anything for your preferred genre.");
+            }
             for (Object aList : results) {
                 System.out.println(aList);
             }
@@ -64,7 +66,9 @@ public class FetchNotification {
             String sql = "SELECT distinct movie_name FROM SNM_Final.genrelist g ,SNM_Final.preferences p,SNM_Final.moviedetail m where p.genre = g.genre and g.movie_ID= m.movie_ID and m.releasedate between :thirtyDaysAgo and :now and p.email_ID = :email";
             Query query = sessionob.createSQLQuery(sql).setParameter("now", now).setParameter("thirtyDaysAgo",thirtyDaysAgo).setParameter("email",email);
             List results = query.list();
-            System.out.println(results);
+            if(results.isEmpty()){
+                System.out.println("Sorry we do not have anything for your preferred genre.");
+            }
             for (Object aList : results) {
                 System.out.println(aList);
             }
@@ -94,7 +98,9 @@ public class FetchNotification {
             String sql = "SELECT distinct movie_name FROM genrelist g ,preferences p, moviedetail m where p.genre = g.genre and g.movie_ID= m.movie_ID and m.releasedate between :now and :nextweek and p.email_ID = :email";
             Query query = sessionob.createSQLQuery(sql).setParameter("now", now).setParameter("nextweek",nextweek).setParameter("email",email);
             List results = query.list();
-            System.out.println(results);
+            if(results.isEmpty()){
+                System.out.println("Sorry we do not have anything for your preferred genre.");
+            }
             for (Object aList : results) {
                 System.out.println(aList);
             }
@@ -123,7 +129,9 @@ public class FetchNotification {
             String sql = "SELECT distinct movie_name FROM genrelist g ,preferences p, moviedetail m where p.genre = g.genre and g.movie_ID= m.movie_ID and m.releasedate between :now and :nextMonth and p.email_ID = :email";
             Query query = sessionob.createSQLQuery(sql).setParameter("now", now).setParameter("nextMonth",nextMonth).setParameter("email",email);
             List results = query.list();
-            System.out.println(results);
+            if(results.isEmpty()){
+                System.out.println("Sorry we do not have anything for your preferred genre.");
+            }
             for (Object aList : results) {
                 System.out.println(aList);
             }
