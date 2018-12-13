@@ -15,7 +15,7 @@ public class FetchWatchList {
     private static FetchWatchList fetchWatchList;
     private static String email_ID;
 
-    public FetchWatchList()
+    private FetchWatchList()
     { }
     public static FetchWatchList getFetchWatchListInstance() {
         if (fetchWatchList == null)

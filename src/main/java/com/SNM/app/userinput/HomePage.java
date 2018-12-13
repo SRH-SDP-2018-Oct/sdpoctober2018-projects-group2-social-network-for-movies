@@ -55,7 +55,7 @@ public class HomePage {
                 case ("2"):
                     System.out.println("Languages available:");
                     System.out.println("--------------------");
-                    System.out.println("en - English\nka - Kannada\nhi - Hindi\nte - Telugu\nta - Tamil\nma - Malyalam\nde - German\nsp - Spanish\nfr - French\nit - Italian\n");
+                    System.out.println("en - English\nka - Kannada\nhi - Hindi\nte - Telugu\nta - Tamil\nma - Malayalam\nde - German\nsp - Spanish\nfr - French\nit - Italian\n");
                     System.out.println("Enter your choice of language : Example, Press en for English");
                     List<String> language = new ArrayList<String>();
                     language.add("en");
@@ -134,7 +134,7 @@ public class HomePage {
                     break;
                 case("9"):
                     System.out.println("-----------------------");
-                    System.out.println("Please select you mood:\n-----------------------\n1. Happy\n2. Sad\n3. Bored\n");
+                    System.out.println("Please select your mood:\n-----------------------\n1. Happy\n2. Sad\n3. Bored\n");
                     String moodCh = userchoice.next();
                     String moodSearch;
                     switch (moodCh){

@@ -19,7 +19,7 @@ public class InsertUserReviews {
     private static InsertUserReviews insertUserReviews;
     public static String email_ID;
 
-    public InsertUserReviews() {
+    private InsertUserReviews() {
     }
 
     public static InsertUserReviews getInsertUserReviewsinstance()
@@ -41,7 +41,7 @@ public class InsertUserReviews {
         {
             sessionObj = hibernateUtil.buildSessionFactory().openSession();
             sessionObj.beginTransaction();
-            String sql = "Select email_ID,timestamp,review FROM userreview  Where movie_ID = :movie_ID";
+            String sql = "Select email_ID,timestamp,review FROM userreview u Where movie_ID = :movie_ID order by u.timestamp";
             SQLQuery query = sessionObj.createSQLQuery(sql).setParameter("movie_ID", movie_ID);
             List<Object[]> list = (List<Object[]>)query.list();
             for (Object[] aList : list)

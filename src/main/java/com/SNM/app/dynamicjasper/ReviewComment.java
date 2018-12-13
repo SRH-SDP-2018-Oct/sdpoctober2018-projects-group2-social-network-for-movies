@@ -30,7 +30,7 @@ public class ReviewComment {
             String moviename = scan.nextLine();
             dbConnection = null;
             preparedStatement = null;
-            String query = "SELECT userreview.email_ID,userreview.timestamp,userreview.review from userreview  join moviedetail  on moviedetail.movie_ID=userreview.movie_ID and moviedetail.movie_name=?";
+            String query = "SELECT userreview.email_ID,userreview.timestamp,userreview.review from userreview  join moviedetail  on moviedetail.movie_ID=userreview.movie_ID and moviedetail.movie_name=? order by userreview.timestamp";
             Class.forName(DB_DRIVER);
             dbConnection = DriverManager.getConnection(myUrl, DB_USER, DB_PASSWORD);
             preparedStatement = dbConnection.prepareStatement(query);

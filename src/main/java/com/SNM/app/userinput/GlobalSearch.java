@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class GlobalSearch {
 
-    public static final String GOOGLE_SEARCH_URL = "https://www.google.com/search";
+    final String GOOGLE_SEARCH_URL = "https://www.google.com/search";
     public GlobalSearch() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the movie to be searched in internet:  ");

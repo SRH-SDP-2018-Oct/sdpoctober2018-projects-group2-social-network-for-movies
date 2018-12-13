@@ -23,7 +23,6 @@ public class FetchMovieSearch {
     Scanner scanner = new Scanner(System.in);
     private int movieID;
     private int movie;
-    InsertUserReviews viewreview=new InsertUserReviews();
     public FetchMovieSearch(String movie_name)
     {
         fetchMovieDetails(movie_name);
@@ -76,7 +75,7 @@ public class FetchMovieSearch {
                         rateMovie();
                         break;
                     case (3):
-                        viewreview.fetchUserReviews(this.movieID);
+                        InsertUserReviews.getInsertUserReviewsinstance().fetchUserReviews(this.movieID);
                         break;
                     case(4):
                         Date date= new Date();
